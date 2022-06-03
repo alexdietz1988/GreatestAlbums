@@ -19,7 +19,7 @@ with open(filename) as f:
     for row in reader:
         title = row[4]
         artist = format_artist(row[3])
-        image =
+        image = ''
         year = row[5]
         rank = row[2]
 

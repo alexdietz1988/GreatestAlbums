@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock%}
+
+{%block body%}
+<h1>{{decade}}</h1>
+
+{% for album in albums %}
+    {% if album.year >= decade and album.year < decade|add:'10' %}
+        <a href="{% url 'album_detail' album.pk %}"><img src={{album.image}} alt="{{album.title}}" style="width:100px"/></a><br />
+        <b>{{album.title}}</b><br />
+        {{album.artist}}, {{album.year}}<br />
+        Rank: {{album.rank}}
+    {% endif %}
+{% endfor %}
+{% endblock %}
