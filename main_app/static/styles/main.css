@@ -1,0 +1,14 @@
+body, a {
+    background-color: black;
+    color: white
+}
+
+.album-container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 80vw;
+}
+
+.cover-small {
+    width: 100px
+}

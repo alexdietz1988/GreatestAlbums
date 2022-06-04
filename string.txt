@@ -2729,3 +2729,4 @@ INSERT INTO main_app_album(title, artist, image, rank_2003, rank_2012, rank_2020
 INSERT INTO main_app_album(title, artist, image, rank_2003, rank_2012, rank_2020, year)
 	VALUES
 		('New Boots and Panties!!', 'Ian and the Blockheads Dury', 'http://alexdietz.com/covers/0.jpg', 495, 0, 0, 1977);
+

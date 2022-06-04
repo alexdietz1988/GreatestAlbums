@@ -6,12 +6,13 @@ class Album(models.Model):
     title = models.CharField(max_length=250)
     artist = models.CharField(max_length=250)
     image = models.CharField(max_length=500, default='')
-    rank = models.CharField(max_length=250)
+    rank_2003 = models.IntegerField(default=0)
+    rank_2012 = models.IntegerField(default=0)
+    rank_2020 = models.IntegerField(default=0)
     year = models.IntegerField()
-    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
     
     class Meta:
-        ordering = ['rank']
+        ordering = ['rank_2020']
