@@ -6,7 +6,7 @@ from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Album, UserList, User
+from .models import Album, User, Favorite, WantToListen, Listened, NotInterested
 
 # Create your views here.
 class AddForm(forms.Form):
@@ -48,51 +48,51 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
-class Favorites(TemplateView):
+class FavoritesPage(TemplateView):
     template_name = "userlist/favorites.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.filter(user=self.request.user)
+        context['favorites'] = Favorite.objects.filter(user=self.request.user)
         return context
 
-class WantToListen(TemplateView):
+class WantToListenPage(TemplateView):
     template_name = "userlist/wanttolisten.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.filter(user=self.request.user)
+        context['want_to_listen'] = WantToListen.objects.filter(user=self.request.user)
         return context
 
-class Listened(TemplateView):
+class ListenedPage(TemplateView):
     template_name = "userlist/listened.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.filter(user=self.request.user)
+        context['listened'] = Listened.objects.filter(user=self.request.user)
         return context
 
-class NotInterested(TemplateView):
+class NotInterestedPage(TemplateView):
     template_name = "userlist/notinterested.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.filter(user=self.request.user)
+        context['not_interested'] = NotInterested.objects.filter(user=self.request.user)
         return context
 
-class AddToUserList(View):
-    def post(self, request, pk):
-        user = self.request.user
-        album = Album.objects.get(pk=pk)
+# class AddToUserList(View):
+#     def post(self, request, pk):
+#         user = self.request.user
+#         album = Album.objects.get(pk=pk)
 
-        if request.POST.get("want_to_listen"): want_to_listen = request.POST.get("want_to_listen")
-        else: want_to_listen = False
-        if request.POST.get("listened"): listened = request.POST.get("listened")
-        else: listened = False
-        if request.POST.get("favorite"): favorite = request.POST.get("favorite")
-        else: favorite = False
-        if request.POST.get("not_interested"): not_interested = request.POST.get("not_interested")
-        else: not_interested = False
+#         if request.POST.get("want_to_listen"): want_to_listen = request.POST.get("want_to_listen")
+#         else: want_to_listen = False
+#         if request.POST.get("listened"): listened = request.POST.get("listened")
+#         else: listened = False
+#         if request.POST.get("favorite"): favorite = request.POST.get("favorite")
+#         else: favorite = False
+#         if request.POST.get("not_interested"): not_interested = request.POST.get("not_interested")
+#         else: not_interested = False
 
-        UserList.objects.create(user=user, album=album, want_to_listen=want_to_listen, listened=listened, favorite=favorite, not_interested=not_interested)
-        return redirect('album_detail', pk=pk)
+#         UserList.objects.create(user=user, album=album, want_to_listen=want_to_listen, listened=listened, favorite=favorite, not_interested=not_interested)
+#         return redirect('album_detail', pk=pk)

@@ -8,14 +8,14 @@ Want to Listen
 <h1>Want to Listen</h1>
 
 <div class="album-container">
-    {% for userlist in userlists %}
-            {% if userlist.want_to_listen == True %}
-                <div>
-                <a href="{% url 'album_detail' userlist.album.pk %}">
-                    <img src="{{userlist.album.image}}" alt="{{userlist.album.title}}" class="cover-small"/>
-                </a>
-                </div>
-            {% endif %}
+    {% for album in want_to_listen %}
+        <div>
+            <a href="{% url 'album_detail' album.album.pk %}">
+                <img src="{{album.album.image}}" alt="{{album.album.title}}" class="cover-small"/>
+            </a>
+        </div>
+    {% empty %}
+        <p>Nothing here!</p>
     {% endfor %}
 </div>
 

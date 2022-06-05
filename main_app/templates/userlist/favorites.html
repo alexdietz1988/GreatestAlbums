@@ -8,14 +8,14 @@ Favorites
 <h1>Favorites</h1>
 
 <div class="album-container">
-    {% for userlist in userlists %}
-            {% if userlist.favorite == True %}
-                <div>
-                <a href="{% url 'album_detail' userlist.album.pk %}">
-                    <img src="{{userlist.album.image}}" alt="{{userlist.album.title}}" class="cover-small"/>
+    {% for album in favorites %}
+            <div>
+                <a href="{% url 'album_detail' album.album.pk %}">
+                    <img src="{{album.album.image}}" alt="{{album.album.title}}" class="cover-small"/>
                 </a>
-                </div>
-            {% endif %}
+            </div>
+        {% empty %}
+        <p>Nothing here!</p>
     {% endfor %}
 </div>
 
