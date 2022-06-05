@@ -7,16 +7,6 @@ Listened
 {%block body%}
 <h1>Listened</h1>
 
-<div>
-    <a href="{% url 'decade' 1950 %}">1950s</a>
-    <a href="{% url 'decade' 1960 %}">1960s</a>
-    <a href="{% url 'decade' 1970 %}">1970s</a>
-    <a href="{% url 'decade' 1980 %}">1980s</a>
-    <a href="{% url 'decade' 1990 %}">1990s</a>
-    <a href="{% url 'decade' 2000 %}">2000s</a>
-    <a href="{% url 'decade' 2010 %}">2010s</a>
-</div>
-
 <div class="album-container">
     {% for userlist in userlists %}
             {% if userlist.listened == True %}

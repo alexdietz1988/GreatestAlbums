@@ -13,7 +13,6 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['albums'] = Album.objects.all()
-        context['userlists'] = UserList.objects.all()
         return context
 
 class AlbumDetail(DetailView):
@@ -49,7 +48,6 @@ class Favorites(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['albums'] = Album.objects.all()
         context['userlists'] = UserList.objects.all()
         return context
 
@@ -58,7 +56,6 @@ class WantToListen(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['albums'] = Album.objects.all()
         context['userlists'] = UserList.objects.all()
         return context
 
@@ -67,7 +64,6 @@ class Listened(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['albums'] = Album.objects.all()
         context['userlists'] = UserList.objects.all()
         return context
 
@@ -76,6 +72,5 @@ class NotInterested(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['albums'] = Album.objects.all()
         context['userlists'] = UserList.objects.all()
         return context
