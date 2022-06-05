@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{{decade}}s{% endblock%}
+{% block title %}
+Favorites
+{% endblock%}
 
 {%block body%}
-
-
-<h1>{{decade}}s</h1>
+<h1>Favorites</h1>
 
 <div>
     <a href="{% url 'decade' 1950 %}">1950s</a>
@@ -18,14 +18,13 @@
 </div>
 
 <div class="album-container">
-{% for album in albums %}
-    {% if album.year >= decade and album.year < decade|add:'10' and album.rank_2020 > 0 %}
-        <div>
-            <a href="{% url 'album_detail' album.pk %}">
-            <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
-            </a><br />
-        </div>
-    {% endif %}
-{% endfor %}
+    {% for userlist in userlists %}
+            <div>
+            <a href="{% url 'album_detail' userlist.album.pk %}">
+                <img src="{{userlist.album.image}}"" alt="{{userlist.album.title}}" class="cover-small"/>
+            </a>
+            </div>
+    {% endfor %}
 </div>
+
 {% endblock %}

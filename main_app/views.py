@@ -4,7 +4,7 @@ from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Album
+from .models import Album, UserList
 
 # Create your views here.
 class Home(TemplateView):
@@ -13,6 +13,16 @@ class Home(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['albums'] = Album.objects.all()
+        context['userlists'] = UserList.objects.all()
+        return context
+
+class Favorites(TemplateView):
+    template_name = "favorites.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        context['userlists'] = UserList.objects.all()
         return context
 
 class AlbumDetail(DetailView):

@@ -20,7 +20,10 @@ class Album(models.Model):
 class UserList(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, default=1)
-    want_to_listen = models.BooleanField
-    not_interested = models.BooleanField
-    favorite = models.BooleanField
-    listened = models.BooleanField
+    want_to_listen = models.BooleanField(default=False)
+    not_interested = models.BooleanField(default=False)
+    favorite = models.BooleanField(default=False)
+    listened = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.user.username} - {self.album}'
