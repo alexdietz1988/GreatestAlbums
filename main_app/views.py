@@ -1,12 +1,17 @@
+from django import forms
 from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Album, UserList, User
 
 # Create your views here.
+class AddForm(forms.Form):
+    want_to_listen = forms.BooleanField()
+
 class Home(TemplateView):
     template_name = "home.html"
 
@@ -64,7 +69,7 @@ class Listened(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.filter(self.request.user)
+        context['userlists'] = UserList.objects.filter(user=self.request.user)
         return context
 
 class NotInterested(TemplateView):
@@ -77,5 +82,17 @@ class NotInterested(TemplateView):
 
 class AddToUserList(View):
     def post(self, request, pk):
-        user = user
-        album = album
+        user = self.request.user
+        album = Album.objects.get(pk=pk)
+
+        if request.POST.get("want_to_listen"): want_to_listen = request.POST.get("want_to_listen")
+        else: want_to_listen = False
+        if request.POST.get("listened"): listened = request.POST.get("listened")
+        else: listened = False
+        if request.POST.get("favorite"): favorite = request.POST.get("favorite")
+        else: favorite = False
+        if request.POST.get("not_interested"): not_interested = request.POST.get("not_interested")
+        else: not_interested = False
+
+        UserList.objects.create(user=user, album=album, want_to_listen=want_to_listen, listened=listened, favorite=favorite, not_interested=not_interested)
+        return redirect('album_detail', pk=pk)
