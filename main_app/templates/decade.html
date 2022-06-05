@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Home
+<a href="{% url "home" %}">Home</a>
 {% endblock%}
 
 {%block body%}
+
+
 <h1>{{decade}}</h1>
 
+<div>
+    <a href="{% url 'decade' 1950 %}">1950s</a>
+    <a href="{% url 'decade' 1960 %}">1960s</a>
+    <a href="{% url 'decade' 1970 %}">1970s</a>
+    <a href="{% url 'decade' 1980 %}">1980s</a>
+    <a href="{% url 'decade' 1990 %}">1990s</a>
+    <a href="{% url 'decade' 2000 %}">2000s</a>
+    <a href="{% url 'decade' 2010 %}">2010s</a>
+</div>
+
+<div class="album-container">
 {% for album in albums %}
-    {% if album.year >= decade and album.year < decade|add:'10' %}
-        <a href="{% url 'album_detail' album.pk %}"><img src={{album.image}} alt="{{album.title}}" style="width:100px"/></a><br />
-        <b>{{album.title}}</b><br />
-        {{album.artist}}, {{album.year}}<br />
-        Rank: {{album.rank}}
+    {% if album.year >= decade and album.year < decade|add:'10' and album.rank_2020 > 0 %}
+        <div>
+        <a href="{% url 'album_detail' album.pk %}"><img src={{album.image}} alt="{{album.title}}" class="cover-small"/></a><br />
+        </div>
     {% endif %}
 {% endfor %}
+</div>
 {% endblock %}

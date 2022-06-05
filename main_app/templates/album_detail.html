@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Home
+<a href="{% url "home" %}">Home</a>
 {% endblock%}
 
 {%block body%}
@@ -9,6 +9,6 @@
 
 <img src={{album.image}} alt="{{album.title}}" style="width:400px"/><br />
 {{album.artist}}, {{album.year}}<br />
-Rank: {{album.rank}}
+Rank: {{album.rank_2020}}
 
 {% endblock %}
