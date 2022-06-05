@@ -4,7 +4,7 @@ from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Album, UserList
+from .models import Album, UserList, User
 
 # Create your views here.
 class Home(TemplateView):
@@ -48,7 +48,7 @@ class Favorites(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.all()
+        context['userlists'] = UserList.objects.filter(user=self.request.user)
         return context
 
 class WantToListen(TemplateView):
@@ -56,7 +56,7 @@ class WantToListen(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.all()
+        context['userlists'] = UserList.objects.filter(user=self.request.user)
         return context
 
 class Listened(TemplateView):
@@ -64,7 +64,7 @@ class Listened(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.all()
+        context['userlists'] = UserList.objects.filter(self.request.user)
         return context
 
 class NotInterested(TemplateView):
@@ -72,5 +72,10 @@ class NotInterested(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['userlists'] = UserList.objects.all()
+        context['userlists'] = UserList.objects.filter(user=self.request.user)
         return context
+
+class AddToUserList(View):
+    def post(self, request, pk):
+        user = user
+        album = album

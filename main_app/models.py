@@ -18,7 +18,7 @@ class Album(models.Model):
         ordering = ['rank_2020']
 
 class UserList(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, related_name='userlists')
     album = models.ForeignKey(Album, on_delete=models.CASCADE, default=1)
     want_to_listen = models.BooleanField(default=False)
     not_interested = models.BooleanField(default=False)
