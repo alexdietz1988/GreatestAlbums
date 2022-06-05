@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<a href="{% url "home" %}">Home</a>
 {% endblock%}
 
 {%block body%}
 
 
-<h1>{{decade}}</h1>
+<h1>{{decade}}s</h1>
 
 <div>
     <a href="{% url 'decade' 1950 %}">1950s</a>
