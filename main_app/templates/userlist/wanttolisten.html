@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Favorites
+Want to Listen
 {% endblock%}
 
 {%block body%}
-<h1>Favorites</h1>
+<h1>Want to Listen</h1>
 
 <div>
     <a href="{% url 'decade' 1950 %}">1950s</a>
@@ -19,11 +19,13 @@ Favorites
 
 <div class="album-container">
     {% for userlist in userlists %}
-            <div>
-            <a href="{% url 'album_detail' userlist.album.pk %}">
-                <img src="{{userlist.album.image}}"" alt="{{userlist.album.title}}" class="cover-small"/>
-            </a>
-            </div>
+            {% if userlist.want_to_listen == True %}
+                <div>
+                <a href="{% url 'album_detail' userlist.album.pk %}">
+                    <img src="{{userlist.album.image}}" alt="{{userlist.album.title}}" class="cover-small"/>
+                </a>
+                </div>
+            {% endif %}
     {% endfor %}
 </div>
 

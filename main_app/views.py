@@ -16,15 +16,6 @@ class Home(TemplateView):
         context['userlists'] = UserList.objects.all()
         return context
 
-class Favorites(TemplateView):
-    template_name = "favorites.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['albums'] = Album.objects.all()
-        context['userlists'] = UserList.objects.all()
-        return context
-
 class AlbumDetail(DetailView):
     model = Album
     template_name = "album_detail.html"
@@ -52,3 +43,39 @@ class Signup(View):
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
+
+class Favorites(TemplateView):
+    template_name = "userlist/favorites.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        context['userlists'] = UserList.objects.all()
+        return context
+
+class WantToListen(TemplateView):
+    template_name = "userlist/wanttolisten.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        context['userlists'] = UserList.objects.all()
+        return context
+
+class Listened(TemplateView):
+    template_name = "userlist/listened.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        context['userlists'] = UserList.objects.all()
+        return context
+
+class NotInterested(TemplateView):
+    template_name = "userlist/notinterested.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        context['userlists'] = UserList.objects.all()
+        return context
