@@ -9,10 +9,11 @@ Listened
 
 <div class="album-container">
     {% for album in listened%}
-        <div>
+        <div class="tooltip">
             <a href="{% url 'album_detail' album.pk %}">
-            <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
-            </a><br />
+                <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
+            </a>
+        <span class="tooltiptext">{{album.rank_2020}}</span>
         </div>
     {% endfor %}
 </div>
