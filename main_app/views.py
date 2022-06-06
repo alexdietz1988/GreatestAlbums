@@ -68,6 +68,22 @@ class WantToListen(TemplateView):
         context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
         return context
 
+class Listened(TemplateView):
+    template_name = "listened.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["listened"] = MyList.objects.get(user=self.request.user).listened.all()
+        return context
+
+class NotInterested(TemplateView):
+    template_name = "not_interested.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["not_interested"] = MyList.objects.get(user=self.request.user).not_interested.all()
+        return context
+
 class AddToFavorites(View):
     def get(self, request, album):
         MyList.objects.get(user=self.request.user).favorites.add(album)
@@ -87,3 +103,23 @@ class RemoveWantToListen(View):
     def get(self, request, album):
         MyList.objects.get(user=self.request.user).want_to_listen.remove(album)
         return redirect('want_to_listen')
+
+class AddListened(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).listened.add(album)
+        return redirect('listened')
+
+class RemoveListened(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).listened.remove(album)
+        return redirect('listened')
+
+class AddNotInterested(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).not_interested.add(album)
+        return redirect('not_interested')
+
+class RemoveNotInterested(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).not_interested.remove(album)
+        return redirect('not_interested')

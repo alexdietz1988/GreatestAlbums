@@ -14,4 +14,12 @@ urlpatterns = [
     path('want-to-listen', views.WantToListen.as_view(), name="want_to_listen"),
     path('albums/<int:album>/add-want-to-listen', views.AddWantToListen.as_view(), name="add_want_to_listen"),
     path('albums/<int:album>/remove-want-to-listen', views.RemoveWantToListen.as_view(), name="remove_want_to_listen"),
+
+    path('listened', views.Listened.as_view(), name="listened"),
+    path('albums/<int:album>/add-listened', views.AddListened.as_view(), name="add_listened"),
+    path('albums/<int:album>/remove-listened', views.RemoveListened.as_view(), name="remove_listened"),
+
+    path('not_interested', views.NotInterested.as_view(), name="not_interested"),
+    path('albums/<int:album>/not-interested', views.AddNotInterested.as_view(), name="add_not_interested"),
+    path('albums/<int:album>/remove-not-interested', views.RemoveNotInterested.as_view(), name="remove_not_interested"),
 ]

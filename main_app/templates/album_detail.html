@@ -26,6 +26,18 @@
     <a href="{% url 'add_want_to_listen' album.pk %}"><button>Add to Want to Listen</button></a>
 {% endif %}
 
+{% if album in listened %}
+    <a href="{% url 'remove_listened' album.pk %}"><button>Remove from Listened</button></a>
+{% else %}
+    <a href="{% url 'add_listened' album.pk %}"><button>Add to Listened</button></a>
+{% endif %}
+
+{% if album in not_interested %}
+    <a href="{% url 'remove_not_interested' album.pk %}"><button>Remove from Not Interested</button></a>
+{% else %}
+    <a href="{% url 'add_not_interested' album.pk %}"><button>Add to Not Interested</button></a>
+{% endif %}
+
 <h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>
 <div class="album-container">
 
