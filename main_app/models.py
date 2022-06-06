@@ -17,30 +17,9 @@ class Album(models.Model):
     class Meta:
         ordering = ['rank_2020']
 
-class Favorite(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, related_name='favorites')
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, default=1)
+class MyList(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    favorites = models.ManyToManyField(Album)
 
     def __str__(self):
-        return f'{self.user.username} - {self.album}'
-
-class WantToListen(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, related_name='want_to_listen')
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, default=1)
-
-    def __str__(self):
-        return f'{self.user.username} - {self.album}'
-
-class Listened(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, related_name='listened')
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, default=1)
-
-    def __str__(self):
-        return f'{self.user.username} - {self.album}'
-
-class NotInterested(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1, related_name='not_interested')
-    album = models.ForeignKey(Album, on_delete=models.CASCADE, default=1)
-
-    def __str__(self):
-        return f'{self.user.username} - {self.album}'
+        return self.user.username

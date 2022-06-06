@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Favorites
+{% endblock%}
+
+{%block body%}
+<h1>Favorites</h1>
+
+<div class="album-container">
+    {% for album in favorites%}
+        <div>
+            <a href="{% url 'album_detail' album.pk %}">
+            <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
+            </a><br />
+        </div>
+    {% endfor %}
+</div>
+
+
+
+{% endblock %}
