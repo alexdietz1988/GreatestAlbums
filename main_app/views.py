@@ -57,3 +57,8 @@ class AddToFavorites(View):
     def get(self, request, album):
         MyList.objects.get(user=self.request.user).favorites.add(album)
         return redirect('favorites')
+
+class RemoveFromFavorites(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).favorites.remove(album)
+        return redirect('favorites')

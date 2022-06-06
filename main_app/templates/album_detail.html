@@ -15,5 +15,6 @@
 </div>
 
 <a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
+<a href="{% url 'remove_from_favorites' album.pk %}"><button>Remove from Favorites</button></a>
 
 {% endblock %}
