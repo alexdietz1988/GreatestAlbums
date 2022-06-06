@@ -3,7 +3,6 @@ from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Album, MyList
@@ -53,3 +52,8 @@ class Favorites(TemplateView):
         context = super().get_context_data(**kwargs)
         context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
         return context
+
+class AddToFavorites(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).favorites.add(album)
+        return redirect('favorites')

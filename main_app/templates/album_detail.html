@@ -6,11 +6,14 @@
 
 {%block body%}
 
-{{album.title}}
 <h1>{{album.title}}</h1>
 
-<img src={{album.image}} alt="{{album.title}}" style="width:400px"/><br />
-{{album.artist}}, {{album.year}}<br />
-Rank: {{album.rank_2020}}
+<div>
+    <img src={{album.image}} alt="{{album.title}}" style="width:400px"/><br />
+    {{album.artist}}, {{album.year}}<br />
+    Rank: {{album.rank_2020}}
+</div>
+
+<a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
 
 {% endblock %}

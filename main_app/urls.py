@@ -8,4 +8,5 @@ urlpatterns = [
     path('accounts/signup', views.Signup.as_view(), name="signup"),
 
     path('favorites', views.Favorites.as_view(), name="favorites"),
+    path('albums/<int:album>/add', views.AddToFavorites.as_view(), name="add_to_favorites")
 ]
