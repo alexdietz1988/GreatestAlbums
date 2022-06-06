@@ -12,3 +12,15 @@ body, a {
 .cover-small {
     width: 100px
 }
+
+.tooltiptext {
+    visibility: hidden;
+    background-color: blue;
+    position: absolute;
+    margin-left: -100px;
+
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
