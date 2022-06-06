@@ -35,6 +35,14 @@ class Decade(TemplateView):
         context['albums'] = Album.objects.all()
         return context
 
+class Year(TemplateView):
+    template_name = "year.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        return context
+
 class Signup(View):
     def get(self, request):
         form = UserCreationForm()

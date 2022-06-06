@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{{decade}}s{% endblock%}
+{% block title %}{{year}}{% endblock%}
 
 {%block body%}
 
 
-<h1>{{decade}}s</h1>
+<h1>{{year}}</h1>
 
 <div>
     Decades: 
@@ -34,7 +34,7 @@
 
 <div class="album-container">
 {% for album in albums %}
-    {% if album.year >= decade and album.year < decade|add:'10' and album.rank_2020 > 0 %}
+    {% if album.year == year and album.rank_2020 > 0 %}
         <div>
             <a href="{% url 'album_detail' album.pk %}">
             <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
