@@ -19,7 +19,10 @@ class Album(models.Model):
 
 class MyList(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    favorites = models.ManyToManyField(Album)
+    favorites = models.ManyToManyField(Album, related_name="favorites")
+    want_to_listen = models.ManyToManyField(Album, related_name="want_to_listen")
+    listened = models.ManyToManyField(Album, related_name="listened")
+    not_interested = models.ManyToManyField(Album, related_name="not_interested")
 
     def __str__(self):
         return self.user.username

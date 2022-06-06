@@ -24,6 +24,7 @@ class AlbumDetail(TemplateView):
         context["album"] = Album.objects.get(pk=pk)
         context["albums"] = Album.objects.all()
         context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
+        context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
         return context
 
 class Decade(TemplateView):
@@ -59,6 +60,14 @@ class Favorites(TemplateView):
         context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
         return context
 
+class WantToListen(TemplateView):
+    template_name = "want_to_listen.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
+        return context
+
 class AddToFavorites(View):
     def get(self, request, album):
         MyList.objects.get(user=self.request.user).favorites.add(album)
@@ -68,3 +77,13 @@ class RemoveFromFavorites(View):
     def get(self, request, album):
         MyList.objects.get(user=self.request.user).favorites.remove(album)
         return redirect('favorites')
+
+class AddWantToListen(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).want_to_listen.add(album)
+        return redirect('want_to_listen')
+
+class RemoveWantToListen(View):
+    def get(self, request, album):
+        MyList.objects.get(user=self.request.user).want_to_listen.remove(album)
+        return redirect('want_to_listen')

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Favorites
+Want to Listen
 {% endblock%}
 
 {%block body%}
-<h1>Favorites</h1>
+<h1>Want to Listen</h1>
 
 <div class="album-container">
-    {% for album in favorites%}
+    {% for album in want_to_listen%}
         <div>
             <a href="{% url 'album_detail' album.pk %}">
             <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>

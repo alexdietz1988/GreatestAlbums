@@ -20,6 +20,12 @@
     <a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
 {% endif %}
 
+{% if album in want_to_listen %}
+    <a href="{% url 'remove_want_to_listen' album.pk %}"><button>Remove from Want to Listen</button></a>
+{% else %}
+    <a href="{% url 'add_want_to_listen' album.pk %}"><button>Add to Want to Listen</button></a>
+{% endif %}
+
 <h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>
 <div class="album-container">
 
