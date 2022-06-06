@@ -16,12 +16,13 @@ class Home(TemplateView):
         context['albums'] = Album.objects.all()
         return context
 
-class AlbumDetail(DetailView):
-    model = Album
+class AlbumDetail(TemplateView):
     template_name = "album_detail.html"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["album"] = Album.objects.get(pk=pk)
+        context["albums"] = Album.objects.all()
         context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
         return context
 
