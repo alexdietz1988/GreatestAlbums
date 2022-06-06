@@ -14,7 +14,10 @@
     Rank: {{album.rank_2020}}
 </div>
 
-<a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
-<a href="{% url 'remove_from_favorites' album.pk %}"><button>Remove from Favorites</button></a>
+{% if album in favorites %}
+    <a href="{% url 'remove_from_favorites' album.pk %}"><button>Remove from Favorites</button></a>
+{% else %}
+    <a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
+{% endif %}
 
 {% endblock %}

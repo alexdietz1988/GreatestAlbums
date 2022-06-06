@@ -20,6 +20,11 @@ class AlbumDetail(DetailView):
     model = Album
     template_name = "album_detail.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
+        return context
+
 class Decade(TemplateView):
     template_name = "decade.html"
 
