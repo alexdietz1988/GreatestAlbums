@@ -61,7 +61,7 @@ class Signup(View):
             return render(request, "registration/signup.html", context)
 
 class Favorites(TemplateView):
-    template_name = "favorites.html"
+    template_name = "mylist/favorites.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -69,7 +69,7 @@ class Favorites(TemplateView):
         return context
 
 class WantToListen(TemplateView):
-    template_name = "want_to_listen.html"
+    template_name = "mylist/want_to_listen.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -77,7 +77,7 @@ class WantToListen(TemplateView):
         return context
 
 class Listened(TemplateView):
-    template_name = "listened.html"
+    template_name = "mylist/listened.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -85,7 +85,7 @@ class Listened(TemplateView):
         return context
 
 class NotInterested(TemplateView):
-    template_name = "not_interested.html"
+    template_name = "mylist/not_interested.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
