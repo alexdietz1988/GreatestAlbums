@@ -35,10 +35,6 @@ main {
     text-align: center;
 }
 
-a {
-    color: white;
-}
-
 .cover-display {
     display: flex;
     flex-flow: row wrap;
@@ -49,7 +45,6 @@ a {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    width: 850px;
 }
 
 .cover-container {
@@ -57,15 +52,28 @@ a {
 }
 
 .menu {
-    text-align: center;
     padding: 10px 0;
     margin: 5px 0;
     background-color: #374048;
     width: 842px;
+    display: flex;
+    justify-content: center;
+}
+
+.menu ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 0;
+}
+
+.menu li {
+    display: inline;
+    margin: 10px;
 }
 
 .menu a {
-    margin: 10px;
+    margin: 0px;
     color: #00bfff;
     text-decoration: none;
 }
@@ -87,4 +95,42 @@ a {
 
 .arrow {
     color: darkgrey;
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        padding-bottom: 0;
+    }
+
+    nav, main {
+        width: 95vw;
+        justify-content: center;
+        flex-flow: column wrap;
+    }
+
+    nav ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    nav li {
+        padding-bottom: 0;
+    }
+
+    .menu {
+        padding: 0;
+    }
+
+    .menu li {
+        font-size: smaller;
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .menu ul {
+        width: 60vw;
+    }
 }
