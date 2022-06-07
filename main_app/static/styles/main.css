@@ -177,6 +177,10 @@ button {
         height: 100%;
     }
 
+    .cover-medium {
+        width: 40vw;
+    }
+
     .album-details {
         width: 90vw;
     }
