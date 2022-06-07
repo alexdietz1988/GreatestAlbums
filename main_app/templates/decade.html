@@ -27,7 +27,7 @@
             <li><a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a></li>
         
         {% if decade < 2010 %}
-            <li><span class="arrow">→</span> <a href="{% url 'decade' decade|add:'10' %}">{{decade|add:'10'}}s</a></li>
+            <li>→ <a href="{% url 'decade' decade|add:'10' %}">{{decade|add:'10'}}s</a></li>
         {% endif %}
         </ul>
     </div>

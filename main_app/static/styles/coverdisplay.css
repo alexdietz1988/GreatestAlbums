@@ -18,6 +18,7 @@
     padding: 10px 0;
     margin: 5px 0;
     background-color: #374048;
+    color: darkgrey;
     width: 842px;
     display: flex;
     justify-content: center;
@@ -54,10 +55,6 @@
 
 .cover-container:hover .tooltiptext {
     visibility: visible;
-}
-
-.arrow {
-    color: darkgrey;
 }
 
 @media screen and (max-width: 750px) {
