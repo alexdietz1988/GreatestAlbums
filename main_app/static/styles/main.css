@@ -1,21 +1,44 @@
 body {
     background-color: #262626;
     color: white;
-    width: 950px;
+    width: 850px;
     margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 a {
     color: white;
 }
 
-span {
-    margin: 0;
+.cover-display {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 .covers-container {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
+    width: 850px;
+}
+
+.cover-container {
+    margin: 1px 3px;
+}
+
+.menu {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #374048;
+    width: 842px;
+}
+
+.menu a {
+    margin: 10px;
+    color: #00bfff;
+    text-decoration: none;
 }
 
 .cover-small {
@@ -27,7 +50,6 @@ span {
     background-color: blue;
     position: absolute;
     margin-left: -100px;
-
 }
 
 .cover-container:hover .tooltiptext {

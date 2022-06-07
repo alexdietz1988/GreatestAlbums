@@ -7,27 +7,29 @@ Home
 {%block body%}
 <h1>Greatest Albums</h1>
 
-<div>
-    <a href="{% url 'decade' 1950 %}">1950s</a>
-    <a href="{% url 'decade' 1960 %}">1960s</a>
-    <a href="{% url 'decade' 1970 %}">1970s</a>
-    <a href="{% url 'decade' 1980 %}">1980s</a>
-    <a href="{% url 'decade' 1990 %}">1990s</a>
-    <a href="{% url 'decade' 2000 %}">2000s</a>
-    <a href="{% url 'decade' 2010 %}">2010s</a>
-</div>
+<div class="cover-display">
+    <div class="menu">
+        <a href="{% url 'decade' 1950 %}">1950s</a>
+        <a href="{% url 'decade' 1960 %}">1960s</a>
+        <a href="{% url 'decade' 1970 %}">1970s</a>
+        <a href="{% url 'decade' 1980 %}">1980s</a>
+        <a href="{% url 'decade' 1990 %}">1990s</a>
+        <a href="{% url 'decade' 2000 %}">2000s</a>
+        <a href="{% url 'decade' 2010 %}">2010s</a>
+    </div>
 
-<div class="covers-container">
-    {% for album in albums %}
-        {% if album.rank_2020 > 0 %}
-            <div class="cover-container">
-                <a href="{% url 'album_detail' album.pk %}">
-                    <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
-                </a>
-                <span class="tooltiptext">{{album.rank_2020}}</span>
-            </div>
-        {% endif %}
-    {% endfor %}
+    <div class="covers-container">
+        {% for album in albums %}
+            {% if album.rank_2020 > 0 %}
+                <div class="cover-container">
+                    <a href="{% url 'album_detail' album.pk %}">
+                        <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
+                    </a>
+                    <span class="tooltiptext">{{album.rank_2020}}</span>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
