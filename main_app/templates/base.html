@@ -12,21 +12,22 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><span class="site-title">Greatest Albums</span></li>
-                <li><a href="{% url "home" %}">Home</a></li>
-
-            {% if user.is_authenticated %}
-                <li><a href="{% url "favorites" %}">Favorites</a></li>
-                <li><a href="{% url "want_to_listen" %}">Want to Listen</a></li>
-                <li><a href="{% url "listened" %}">Listened</a></li>
-                <li><a href="{% url "not_interested" %}">Not Interested</a></li>
-                <li><a href="{% url "logout" %}">Logout</a></li>
-            {% else %}
-                <li><a href="{% url "signup" %}">Sign Up</a></li>
-                <li><a href="{% url "login" %}">Log In</a></li>
-            {% endif %}
-            </ul>
+            <div><b>Greatest Albums</b></div>
+            <div>
+                <ul>
+                    <li><a href="{% url "home" %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url "favorites" %}">Favorites</a></li>
+                    <li><a href="{% url "want_to_listen" %}">Want to Listen</a></li>
+                    <li><a href="{% url "listened" %}">Listened</a></li>
+                    <li><a href="{% url "not_interested" %}">Not Interested</a></li>
+                    <li><a href="{% url "logout" %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url "signup" %}">Sign Up</a></li>
+                    <li><a href="{% url "login" %}">Log In</a></li>
+                {% endif %}
+                </ul>
+            </div>
         </nav>
 
     </header>
