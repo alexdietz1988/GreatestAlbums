@@ -11,7 +11,7 @@ Listened
     {% for album in listened%}
         <div class="cover-container">
             <a href="{% url 'album_detail' album.pk %}">
-                <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
+                <img src={{album.image}} alt="{{album.title}}" class="cover-medium"/>
             </a>
         <span class="tooltiptext">{{album.rank_2020}}</span>
         </div>

@@ -132,6 +132,10 @@ button {
     background-color: darkred;
 }
 
+.cover-medium {
+    width: 250px;
+}
+
 @media screen and (max-width: 750px) {
     header {
         padding-bottom: 0;
