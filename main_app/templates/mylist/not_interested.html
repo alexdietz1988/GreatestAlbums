@@ -7,9 +7,9 @@ Not Interested
 {%block body%}
 <h1>Not Interested</h1>
 
-<div class="album-container">
+<div class="covers-container">
     {% for album in not_interested%}
-        <div class="tooltip">
+        <div class="cover-container">
             <a href="{% url 'album_detail' album.pk %}">
             <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
             </a>

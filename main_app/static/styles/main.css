@@ -1,16 +1,25 @@
-body, a {
-    background-color: black;
-    color: white
+body {
+    background-color: #262626;
+    color: white;
+    width: 950px;
+    margin: 0 auto;
 }
 
-.album-container {
+a {
+    color: white;
+}
+
+span {
+    margin: 0;
+}
+
+.covers-container {
     display: flex;
     flex-flow: row wrap;
-    width: 80vw;
 }
 
 .cover-small {
-    width: 100px
+    width: 100px;
 }
 
 .tooltiptext {
@@ -21,6 +30,6 @@ body, a {
 
 }
 
-.tooltip:hover .tooltiptext {
+.cover-container:hover .tooltiptext {
     visibility: visible;
 }

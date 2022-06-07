@@ -39,12 +39,12 @@
 {% endif %}
 
 <h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>
-<div class="album-container">
+<div class="covers-container">
 
 {% for other_album in albums %}
     {% if other_album.artist == album.artist and other_album.title != album.title and other_album.rank_2020 > 0 %}
 
-        <div class="tooltip">
+        <div class="cover-container">
             <a href="{% url 'album_detail' other_album.pk %}">
                 <img src="{{other_album.image}}" alt="{{other_album.title}}" class="cover-small"/>
             </a>

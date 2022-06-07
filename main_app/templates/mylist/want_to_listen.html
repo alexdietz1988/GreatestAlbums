@@ -7,9 +7,9 @@ Want to Listen
 {%block body%}
 <h1>Want to Listen</h1>
 
-<div class="album-container">
+<div class="covers-container">
     {% for album in want_to_listen%}
-        <div class="tooltip">
+        <div class="cover-container">
             <a href="{% url 'album_detail' album.pk %}">
                 <img src={{album.image}} alt="{{album.title}}" class="cover-small"/>
             </a>
