@@ -1,7 +1,5 @@
-from django import forms
 from django.shortcuts import redirect, render
 from django.views import View
-from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -98,27 +96,31 @@ class NotInterested(TemplateView):
 class ToggleFavorite(View):
     def get(self, request, album):
         toggle = request.GET.get("toggle")
-        if toggle == "add": MyList.objects.get(user=self.request.user).favorites.add(album)
-        if toggle == "remove": MyList.objects.get(user=self.request.user).favorites.remove(album)
-        return redirect('favorites')
+        favorites = MyList.objects.get(user=self.request.user).favorites
+        if toggle == "add": favorites.add(album)
+        if toggle == "remove": favorites.remove(album)
+        return redirect('album_detail', pk=album)
 
 class ToggleWantToListen(View):
     def get(self, request, album):
         toggle = request.GET.get("toggle")
-        if toggle == "add": MyList.objects.get(user=self.request.user).want_to_listen.add(album)
-        if toggle == "remove": MyList.objects.get(user=self.request.user).want_to_listen.remove(album)
-        return redirect('want_to_listen')
+        want_to_listen = MyList.objects.get(user=self.request.user).want_to_listen
+        if toggle == "add": want_to_listen.add(album)
+        if toggle == "remove": want_to_listen.remove(album)
+        return redirect('album_detail', pk=album)
 
 class ToggleListened(View):
     def get(self, request, album):
         toggle = request.GET.get("toggle")
-        if toggle == "add": MyList.objects.get(user=self.request.user).listened.add(album)
-        if toggle == "remove": MyList.objects.get(user=self.request.user).listened.remove(album)
-        return redirect('listened')
+        listened = MyList.objects.get(user=self.request.user).listened
+        if toggle == "add": listened.add(album)
+        if toggle == "remove": listened.remove(album)
+        return redirect('album_detail', pk=album)
 
 class ToggleNotInterested(View):
     def get(self, request, album):
         toggle = request.GET.get("toggle")
-        if toggle == "add": MyList.objects.get(user=self.request.user).not_interested.add(album)
-        if toggle == "remove": MyList.objects.get(user=self.request.user).not_interested.remove(album)
-        return redirect('not_interested')
+        not_interested = MyList.objects.get(user=self.request.user).not_interested
+        if toggle == "add": not_interested.add(album)
+        if toggle == "remove": not_interested.remove(album)
+        return redirect('album_detail', pk=album)
