@@ -1,10 +1,33 @@
 body {
     background-color: #262626;
     color: white;
-    width: 850px;
-    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
     text-align: center;
+}
+
+header {
+    padding: 10px 0;
+    background-color: #161a1d;
+}
+
+.site-title {
+    font-weight: bold;
+}
+
+nav li {
+    display: inline;
+    padding: 10px;
+}
+
+nav li a {
+    text-decoration: none;
+    color:#00bfff;
+}
+
+main {
+    width: 850px;
+    margin: 0 auto;
 }
 
 a {
@@ -31,6 +54,7 @@ a {
 .menu {
     text-align: center;
     padding: 10px 0;
+    margin: 5px 0;
     background-color: #374048;
     width: 842px;
 }
@@ -54,4 +78,8 @@ a {
 
 .cover-container:hover .tooltiptext {
     visibility: visible;
+}
+
+.arrow {
+    color: darkgrey;
 }

@@ -14,28 +14,30 @@
     Rank: {{album.rank_2020}}
 </div>
 
-{% if album in favorites %}
-    <a href="{% url 'remove_from_favorites' album.pk %}"><button>Remove from Favorites</button></a>
-{% else %}
-    <a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
-{% endif %}
+{% if user.is_authenticated %}
+    {% if album in favorites %}
+        <a href="{% url 'remove_from_favorites' album.pk %}"><button>Remove from Favorites</button></a>
+    {% else %}
+        <a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
+    {% endif %}
 
-{% if album in want_to_listen %}
-    <a href="{% url 'remove_want_to_listen' album.pk %}"><button>Remove from Want to Listen</button></a>
-{% else %}
-    <a href="{% url 'add_want_to_listen' album.pk %}"><button>Add to Want to Listen</button></a>
-{% endif %}
+    {% if album in want_to_listen %}
+        <a href="{% url 'remove_want_to_listen' album.pk %}"><button>Remove from Want to Listen</button></a>
+    {% else %}
+        <a href="{% url 'add_want_to_listen' album.pk %}"><button>Add to Want to Listen</button></a>
+    {% endif %}
 
-{% if album in listened %}
-    <a href="{% url 'remove_listened' album.pk %}"><button>Remove from Listened</button></a>
-{% else %}
-    <a href="{% url 'add_listened' album.pk %}"><button>Add to Listened</button></a>
-{% endif %}
+    {% if album in listened %}
+        <a href="{% url 'remove_listened' album.pk %}"><button>Remove from Listened</button></a>
+    {% else %}
+        <a href="{% url 'add_listened' album.pk %}"><button>Add to Listened</button></a>
+    {% endif %}
 
-{% if album in not_interested %}
-    <a href="{% url 'remove_not_interested' album.pk %}"><button>Remove from Not Interested</button></a>
-{% else %}
-    <a href="{% url 'add_not_interested' album.pk %}"><button>Add to Not Interested</button></a>
+    {% if album in not_interested %}
+        <a href="{% url 'remove_not_interested' album.pk %}"><button>Remove from Not Interested</button></a>
+    {% else %}
+        <a href="{% url 'add_not_interested' album.pk %}"><button>Add to Not Interested</button></a>
+    {% endif %}
 {% endif %}
 
 <h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>

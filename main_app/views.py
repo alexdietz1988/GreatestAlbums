@@ -23,8 +23,9 @@ class AlbumDetail(TemplateView):
         context = super().get_context_data(**kwargs)
         context["album"] = Album.objects.get(pk=pk)
         context["albums"] = Album.objects.all()
-        context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
-        context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
+        if self.request.user.is_authenticated:
+            context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
+            context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
         return context
 
 class Decade(TemplateView):
