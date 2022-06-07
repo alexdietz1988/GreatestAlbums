@@ -61,38 +61,6 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
-class Favorites(TemplateView):
-    template_name = "mylist/favorites.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
-        return context
-
-class WantToListen(TemplateView):
-    template_name = "mylist/want_to_listen.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
-        return context
-
-class Listened(TemplateView):
-    template_name = "mylist/listened.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["listened"] = MyList.objects.get(user=self.request.user).listened.all()
-        return context
-
-class NotInterested(TemplateView):
-    template_name = "mylist/not_interested.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["not_interested"] = MyList.objects.get(user=self.request.user).not_interested.all()
-        return context
-
 class ToggleMyList(View):
     def get(self, request, album):
         list = request.GET.get("list")
@@ -107,3 +75,18 @@ class ToggleMyList(View):
         if toggle == "add": list.add(album)
         if toggle == "remove": list.remove(album)
         return redirect('album_detail', pk=album)
+    
+class MyListView(TemplateView):
+    template_name = "mylist.html"
+
+    def get_context_data(self, this_list, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if this_list == "favorites":
+            context["albums"] = MyList.objects.get(user=self.request.user).favorites.all()
+        if this_list == "want-to-listen":
+            context["albums"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
+        if this_list == "listened":
+            context["albums"] = MyList.objects.get(user=self.request.user).listened.all()
+        if this_list == "not-interested":
+            context["albums"] = MyList.objects.get(user=self.request.user).not_interested.all()
+        return context

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Favorites
+{{this_list}}
 {% endblock%}
 
 {%block body%}
-<h1>Favorites</h1>
+<h1>{{this_list}}</h1>
 
 <div class="covers-container">
-    {% for album in favorites%}
+    {% for album in albums %}
         <div class="cover-container">
             <a href="{% url 'album_detail' album.pk %}">
             <img src={{album.image}} alt="{{album.title}}" class="cover-medium"/>
@@ -17,5 +17,7 @@ Favorites
         </div>
     {% endfor %}
 </div>
+
+{{hello}}
 
 {% endblock %}

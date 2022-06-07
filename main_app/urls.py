@@ -8,10 +8,6 @@ urlpatterns = [
     path('albums/<int:decade>s/<int:year>', views.Year.as_view(), name="year"),
     path('accounts/signup', views.Signup.as_view(), name="signup"),
 
-    path('favorites', views.Favorites.as_view(), name="favorites"),
-    path('want-to-listen', views.WantToListen.as_view(), name="want_to_listen"),
-    path('listened', views.Listened.as_view(), name="listened"),
-    path('not_interested', views.NotInterested.as_view(), name="not_interested"),
-
+    path('mylist/<slug:this_list>', views.MyListView.as_view(), name="my_list"),
     path('albums/<int:album>/toggle-mylist', views.ToggleMyList.as_view(), name="toggle_my_list"),
 ]
