@@ -26,6 +26,8 @@ class AlbumDetail(TemplateView):
         if self.request.user.is_authenticated:
             context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
             context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
+            context["listened"] = MyList.objects.get(user=self.request.user).listened.all()
+            context["not_interested"] = MyList.objects.get(user=self.request.user).not_interested.all()
         return context
 
 class Decade(TemplateView):

@@ -6,55 +6,55 @@
 
 {%block body%}
 
-<h1>{{album.title}}</h1>
+<div class="album-display">
+    <img src={{album.image}} alt="{{album.title}}" class="cover-large"/>
+    <div class="album-details">
+        <h1>{{album.title}}</h1>
+        <h2>{{album.artist}}, {{album.year}} | #{{album.rank_2020}}</h2>
+    {% if user.is_authenticated %}
+        {% if album in favorites %}
+            <a href="{% url 'remove_from_favorites' album.pk %}"><button class="remove">Remove from Favorites</button></a>
+        {% else %}
+            <a href="{% url 'add_to_favorites' album.pk %}"><button class="add">Add to Favorites</button></a>
+        {% endif %}
 
-<div>
-    <img src={{album.image}} alt="{{album.title}}" style="width:400px"/><br />
-    {{album.artist}}, {{album.year}}<br />
-    Rank: {{album.rank_2020}}
+        {% if album in want_to_listen %}
+            <a href="{% url 'remove_want_to_listen' album.pk %}"><button class="remove">Remove from Want to Listen</button></a>
+        {% else %}
+            <a href="{% url 'add_want_to_listen' album.pk %}"><button class="add">Add to Want to Listen</button></a>
+        {% endif %}
+
+        {% if album in listened %}
+            <a href="{% url 'remove_listened' album.pk %}"><button class="remove">Remove from Listened</button></a>
+        {% else %}
+            <a href="{% url 'add_listened' album.pk %}"><button class="add">Add to Listened</button></a>
+        {% endif %}
+
+        {% if album in not_interested %}
+            <a href="{% url 'remove_not_interested' album.pk %}"><button class="remove">Remove from Not Interested</button></a>
+        {% else %}
+            <a href="{% url 'add_not_interested' album.pk %}"><button class="add">Add to Not Interested</button></a>
+        {% endif %}
+    {% endif %}
+    </div>
 </div>
 
-{% if user.is_authenticated %}
-    {% if album in favorites %}
-        <a href="{% url 'remove_from_favorites' album.pk %}"><button>Remove from Favorites</button></a>
-    {% else %}
-        <a href="{% url 'add_to_favorites' album.pk %}"><button>Add to Favorites</button></a>
-    {% endif %}
+<div class="other-albums">
+    <h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>
+    <div class="covers-container">
 
-    {% if album in want_to_listen %}
-        <a href="{% url 'remove_want_to_listen' album.pk %}"><button>Remove from Want to Listen</button></a>
-    {% else %}
-        <a href="{% url 'add_want_to_listen' album.pk %}"><button>Add to Want to Listen</button></a>
-    {% endif %}
+    {% for other_album in albums %}
+        {% if other_album.artist == album.artist and other_album.title != album.title and other_album.rank_2020 > 0 %}
 
-    {% if album in listened %}
-        <a href="{% url 'remove_listened' album.pk %}"><button>Remove from Listened</button></a>
-    {% else %}
-        <a href="{% url 'add_listened' album.pk %}"><button>Add to Listened</button></a>
-    {% endif %}
-
-    {% if album in not_interested %}
-        <a href="{% url 'remove_not_interested' album.pk %}"><button>Remove from Not Interested</button></a>
-    {% else %}
-        <a href="{% url 'add_not_interested' album.pk %}"><button>Add to Not Interested</button></a>
-    {% endif %}
-{% endif %}
-
-<h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>
-<div class="covers-container">
-
-{% for other_album in albums %}
-    {% if other_album.artist == album.artist and other_album.title != album.title and other_album.rank_2020 > 0 %}
-
-        <div class="cover-container">
-            <a href="{% url 'album_detail' other_album.pk %}">
-                <img src="{{other_album.image}}" alt="{{other_album.title}}" class="cover-small"/>
-            </a>
-            <span class="tooltiptext">{{album.rank_2020}}</span>
-        </div>
-    {% endif %}
-{% endfor %}
+            <div class="cover-container">
+                <a href="{% url 'album_detail' other_album.pk %}">
+                    <img src="{{other_album.image}}" alt="{{other_album.title}}" class="cover-small"/>
+                </a>
+                <span class="tooltiptext">{{album.rank_2020}}</span>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
 </div>
-
 
 {% endblock %}

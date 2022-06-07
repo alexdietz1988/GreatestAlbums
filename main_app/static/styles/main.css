@@ -31,7 +31,7 @@ nav li a {
 
 main {
     width: 850px;
-    margin: 0 auto;
+    margin: 30px auto;
     text-align: center;
 }
 
@@ -82,6 +82,8 @@ main {
     width: 100px;
 }
 
+
+
 .tooltiptext {
     visibility: hidden;
     background-color: blue;
@@ -95,6 +97,40 @@ main {
 
 .arrow {
     color: darkgrey;
+}
+
+.album-display {
+    display: flex;
+    flex-direction: row wrap;
+    justify-content: center;
+    margin: 50px;
+}
+
+.cover-large {
+    width: 400px;
+    display: inline;
+}
+
+.album-details {
+    margin: 20px;
+    display: inline-block;
+    width: 200px;
+}
+
+button {
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 15px;
+    color: lightgrey;
+    border: 1px solid darkslategrey;
+}
+
+.add {
+    background-color: darkgreen;
+}
+
+.remove {
+    background-color: darkred;
 }
 
 @media screen and (max-width: 800px) {
