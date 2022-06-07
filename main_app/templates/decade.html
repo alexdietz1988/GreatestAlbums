@@ -10,22 +10,26 @@
 <div class="cover-display">
 
     <div class="menu">
+        <ul>
         {% if decade > 1950 %}
-            <a href="{% url 'decade' decade|add:'-10' %}">{{decade|add:'-10'}}s</a> <span class="arrow">←</span>
+            <li><a href="{% url 'decade' decade|add:'-10' %}">{{decade|add:'-10'}}s</a> <span class="arrow">←</span></li>
         {% endif %}
-        <a href="{% url 'year' decade decade %}">{{decade}}</a>
-        <a href="{% url 'year' decade decade|add:'1' %}">{{decade|add:'1'}}</a>
-        <a href="{% url 'year' decade decade|add:'2' %}">{{decade|add:'2'}}</a>
-        <a href="{% url 'year' decade decade|add:'3' %}">{{decade|add:'3'}}</a>
-        <a href="{% url 'year' decade decade|add:'4' %}">{{decade|add:'4'}}</a>
-        <a href="{% url 'year' decade decade|add:'5' %}">{{decade|add:'5'}}</a>
-        <a href="{% url 'year' decade decade|add:'6' %}">{{decade|add:'6'}}</a>
-        <a href="{% url 'year' decade decade|add:'7' %}">{{decade|add:'7'}}</a>
-        <a href="{% url 'year' decade decade|add:'8' %}">{{decade|add:'8'}}</a>
-        <a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a>
+        
+            <li><a href="{% url 'year' decade decade %}">{{decade}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'1' %}">{{decade|add:'1'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'2' %}">{{decade|add:'2'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'3' %}">{{decade|add:'3'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'4' %}">{{decade|add:'4'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'5' %}">{{decade|add:'5'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'6' %}">{{decade|add:'6'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'7' %}">{{decade|add:'7'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'8' %}">{{decade|add:'8'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a></li>
+        
         {% if decade < 2010 %}
-            <span class="arrow">→</span> <a href="{% url 'decade' decade|add:'10' %}">{{decade|add:'10'}}s</a>
+            <li><span class="arrow">→</span> <a href="{% url 'decade' decade|add:'10' %}">{{decade|add:'10'}}s</a></li>
         {% endif %}
+        </ul>
     </div>
 
     <div class="covers-container">
