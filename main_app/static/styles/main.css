@@ -82,8 +82,6 @@ main {
     width: 100px;
 }
 
-
-
 .tooltiptext {
     visibility: hidden;
     background-color: blue;
@@ -103,6 +101,7 @@ main {
     display: flex;
     flex-direction: row wrap;
     justify-content: center;
+    align-items: center;
     margin: 50px;
 }
 
@@ -133,7 +132,7 @@ button {
     background-color: darkred;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 750px) {
     header {
         padding-bottom: 0;
     }
@@ -163,6 +162,35 @@ button {
         font-size: smaller;
         margin: 5px;
     }
+
+    .album-display {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .cover-large {
+        width: 75vw;
+        height: 100%;
+    }
+
+    .album-details {
+        width: 90vw;
+    }
+
+    .album-details h1, h2 {
+        font-size: smaller;
+    }
+
+    .buttons {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+    }
+
+    button {
+        padding: 5px;
+    }
+
 }
 
 @media screen and (max-width: 350px) {
