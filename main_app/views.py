@@ -95,42 +95,30 @@ class NotInterested(TemplateView):
         context["not_interested"] = MyList.objects.get(user=self.request.user).not_interested.all()
         return context
 
-class AddToFavorites(View):
+class ToggleFavorite(View):
     def get(self, request, album):
-        MyList.objects.get(user=self.request.user).favorites.add(album)
+        toggle = request.GET.get("toggle")
+        if toggle == "add": MyList.objects.get(user=self.request.user).favorites.add(album)
+        if toggle == "remove": MyList.objects.get(user=self.request.user).favorites.remove(album)
         return redirect('favorites')
 
-class RemoveFromFavorites(View):
+class ToggleWantToListen(View):
     def get(self, request, album):
-        MyList.objects.get(user=self.request.user).favorites.remove(album)
-        return redirect('favorites')
-
-class AddWantToListen(View):
-    def get(self, request, album):
-        MyList.objects.get(user=self.request.user).want_to_listen.add(album)
+        toggle = request.GET.get("toggle")
+        if toggle == "add": MyList.objects.get(user=self.request.user).want_to_listen.add(album)
+        if toggle == "remove": MyList.objects.get(user=self.request.user).want_to_listen.remove(album)
         return redirect('want_to_listen')
 
-class RemoveWantToListen(View):
+class ToggleListened(View):
     def get(self, request, album):
-        MyList.objects.get(user=self.request.user).want_to_listen.remove(album)
-        return redirect('want_to_listen')
-
-class AddListened(View):
-    def get(self, request, album):
-        MyList.objects.get(user=self.request.user).listened.add(album)
+        toggle = request.GET.get("toggle")
+        if toggle == "add": MyList.objects.get(user=self.request.user).listened.add(album)
+        if toggle == "remove": MyList.objects.get(user=self.request.user).listened.remove(album)
         return redirect('listened')
 
-class RemoveListened(View):
+class ToggleNotInterested(View):
     def get(self, request, album):
-        MyList.objects.get(user=self.request.user).listened.remove(album)
-        return redirect('listened')
-
-class AddNotInterested(View):
-    def get(self, request, album):
-        MyList.objects.get(user=self.request.user).not_interested.add(album)
-        return redirect('not_interested')
-
-class RemoveNotInterested(View):
-    def get(self, request, album):
-        MyList.objects.get(user=self.request.user).not_interested.remove(album)
+        toggle = request.GET.get("toggle")
+        if toggle == "add": MyList.objects.get(user=self.request.user).not_interested.add(album)
+        if toggle == "remove": MyList.objects.get(user=self.request.user).not_interested.remove(album)
         return redirect('not_interested')
