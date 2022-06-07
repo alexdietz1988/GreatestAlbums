@@ -13,8 +13,5 @@ urlpatterns = [
     path('listened', views.Listened.as_view(), name="listened"),
     path('not_interested', views.NotInterested.as_view(), name="not_interested"),
 
-    path('albums/<int:album>/toggle-favorite', views.ToggleFavorite.as_view(), name="toggle_favorite"),
-    path('albums/<int:album>/toggle-want-to-listen', views.ToggleWantToListen.as_view(), name="toggle_want_to_listen"),
-    path('albums/<int:album>/toggle-listened', views.ToggleListened.as_view(), name="toggle_listened"),
-    path('albums/<int:album>/toggle-not_interested', views.ToggleNotInterested.as_view(), name="toggle_not_interested"),
+    path('albums/<int:album>/toggle-mylist', views.ToggleMyList.as_view(), name="toggle_my_list"),
 ]

@@ -93,34 +93,17 @@ class NotInterested(TemplateView):
         context["not_interested"] = MyList.objects.get(user=self.request.user).not_interested.all()
         return context
 
-class ToggleFavorite(View):
+class ToggleMyList(View):
     def get(self, request, album):
+        list = request.GET.get("list")
         toggle = request.GET.get("toggle")
-        favorites = MyList.objects.get(user=self.request.user).favorites
-        if toggle == "add": favorites.add(album)
-        if toggle == "remove": favorites.remove(album)
-        return redirect('album_detail', pk=album)
+        mylist = MyList.objects.get(user=self.request.user)
 
-class ToggleWantToListen(View):
-    def get(self, request, album):
-        toggle = request.GET.get("toggle")
-        want_to_listen = MyList.objects.get(user=self.request.user).want_to_listen
-        if toggle == "add": want_to_listen.add(album)
-        if toggle == "remove": want_to_listen.remove(album)
-        return redirect('album_detail', pk=album)
+        if list == "favorites": list = mylist.favorites
+        if list == "want_to_listen": list = mylist.want_to_listen
+        if list == "listened": list = mylist.listened
+        if list == "not_interested": list = mylist.not_interested
 
-class ToggleListened(View):
-    def get(self, request, album):
-        toggle = request.GET.get("toggle")
-        listened = MyList.objects.get(user=self.request.user).listened
-        if toggle == "add": listened.add(album)
-        if toggle == "remove": listened.remove(album)
-        return redirect('album_detail', pk=album)
-
-class ToggleNotInterested(View):
-    def get(self, request, album):
-        toggle = request.GET.get("toggle")
-        not_interested = MyList.objects.get(user=self.request.user).not_interested
-        if toggle == "add": not_interested.add(album)
-        if toggle == "remove": not_interested.remove(album)
+        if toggle == "add": list.add(album)
+        if toggle == "remove": list.remove(album)
         return redirect('album_detail', pk=album)
