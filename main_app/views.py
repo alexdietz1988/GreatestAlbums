@@ -1,3 +1,4 @@
+from pipes import Template
 from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic.base import TemplateView
@@ -6,8 +7,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Album, MyList
 
 # Create your views here.
-class Home(TemplateView):
-    template_name = "home.html"
+class AllAlbums(TemplateView):
+    template_name = "all_albums.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,10 +23,11 @@ class AlbumDetail(TemplateView):
         context["album"] = Album.objects.get(pk=pk)
         context["albums"] = Album.objects.all()
         if self.request.user.is_authenticated:
-            context["favorites"] = MyList.objects.get(user=self.request.user).favorites.all()
-            context["want_to_listen"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
-            context["listened"] = MyList.objects.get(user=self.request.user).listened.all()
-            context["not_interested"] = MyList.objects.get(user=self.request.user).not_interested.all()
+            mylist = MyList.objects.get(user=self.request.user)
+            context["favorites"] = mylist.favorites.all()
+            context["want_to_listen"] = mylist.want_to_listen.all()
+            context["listened"] = mylist.listened.all()
+            context["not_interested"] = mylist.not_interested.all()
         return context
 
 class Decade(TemplateView):
@@ -61,6 +63,18 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
+class MyListView(TemplateView):
+    template_name = "mylist.html"
+
+    def get_context_data(self, this_list, **kwargs):
+        context = super().get_context_data(**kwargs)
+        mylist = MyList.objects.get(user=self.request.user)
+        if this_list == "favorites": context["albums"] = mylist.favorites.all()
+        if this_list == "want-to-listen": context["albums"] = mylist.want_to_listen.all()
+        if this_list == "listened": context["albums"] = mylist.listened.all()
+        if this_list == "not-interested": context["albums"] = mylist.not_interested.all()
+        return context
+
 class ToggleMyList(View):
     def get(self, request, album):
         list = request.GET.get("list")
@@ -75,18 +89,3 @@ class ToggleMyList(View):
         if toggle == "add": list.add(album)
         if toggle == "remove": list.remove(album)
         return redirect('album_detail', pk=album)
-    
-class MyListView(TemplateView):
-    template_name = "mylist.html"
-
-    def get_context_data(self, this_list, **kwargs):
-        context = super().get_context_data(**kwargs)
-        if this_list == "favorites":
-            context["albums"] = MyList.objects.get(user=self.request.user).favorites.all()
-        if this_list == "want-to-listen":
-            context["albums"] = MyList.objects.get(user=self.request.user).want_to_listen.all()
-        if this_list == "listened":
-            context["albums"] = MyList.objects.get(user=self.request.user).listened.all()
-        if this_list == "not-interested":
-            context["albums"] = MyList.objects.get(user=self.request.user).not_interested.all()
-        return context

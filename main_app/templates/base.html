@@ -15,10 +15,10 @@
 <body>
     <header>
         <nav>
-            <div><b>Greatest Albums</b></div>
+            <div class="site-title"><a href="{% url "all_albums" %}">Greatest Albums</a></div>
             <div>
                 <ul>
-                    <li><a href="{% url "home" %}">Home</a></li>
+                    <li><a href="{% url "all_albums" %}">All Albums</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url "my_list" "favorites" %}">Favorites</a></li>
                     <li><a href="{% url "my_list" "want-to-listen" %}">Want to Listen</a></li>
