@@ -28,6 +28,11 @@ a {
     width: 50vw;
 }
 
+.small {
+    font-size: smaller;
+    color: lightgrey;
+}
+
 section {
     margin: 20px;
 }
