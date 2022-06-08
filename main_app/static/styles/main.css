@@ -27,3 +27,16 @@ a {
 .landing {
     width: 50vw;
 }
+
+section {
+    margin: 20px;
+}
+
+.page {
+    display: inline;
+    margin: 10px;
+    background-color: cyan;
+    padding: 10px;
+    border-radius: 10px;
+    color: navy;
+}

@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     path('', views.Landing.as_view(), name="landing"),
-    path('albums', views.AllAlbums.as_view(), name="all_albums"),
     path('albums/page/<int:page>', views.AllAlbums.as_view(), name="all_albums"),
     path('accounts/signup', views.Signup.as_view(), name="signup"),
     path('albums/<int:decade>s', views.Decade.as_view(), name="decade"),

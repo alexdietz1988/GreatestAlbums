@@ -8,8 +8,6 @@ All Albums
 
 <h2>All Albums</h2>
 
-{{page}}
-
 <div class="cover-display">
     <div class="menu">
         <ul>
@@ -25,7 +23,7 @@ All Albums
 
     <div class="covers-container">
         {% for album in albums %}
-            {% if album.rank_2020 > 0 %}
+            {% if page == 1 and album.rank_2020 > 0 and album.rank_2020 < 251 or page == 2 and album.rank_2020 > 250 %}
                 
                 <a href="{% url 'album_detail' album.pk %}">
                     <div class="cover-container">
@@ -45,5 +43,12 @@ All Albums
         {% endfor %}
     </div>
 </div>
+
+
+{% if page == 1 %}
+    <a href="{% url "all_albums" "2" %}" class="page">Next Page</a>
+{% else %}
+    <a href="{% url "all_albums" "2" %}" class="page">Previous Page</a>
+{% endif %}
 
 {% endblock %}
