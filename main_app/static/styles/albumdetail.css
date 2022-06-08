@@ -33,6 +33,12 @@ button {
     background-color: darkred;
 }
 
+.signup-reminder {
+    font-size: smaller;
+    color: lightgrey;
+    display: inline;
+}
+
 @media screen and (max-width: 750px) {
     .album-display {
         flex-direction: column;
@@ -49,7 +55,7 @@ button {
     }
 
     .album-details h1, h2 {
-        font-size: smaller;
+        font-size: 18px;
     }
 
     .buttons {

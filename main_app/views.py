@@ -1,4 +1,3 @@
-from pipes import Template
 from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic.base import TemplateView
@@ -7,6 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Album, MyList
 
 # Create your views here.
+class Landing(TemplateView):
+    template_name="landing.html"
+
 class AllAlbums(TemplateView):
     template_name = "all_albums.html"
 

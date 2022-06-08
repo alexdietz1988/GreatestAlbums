@@ -11,33 +11,35 @@
     <div class="album-details">
         <h1>{{album.title}}</h1>
         <h2>{{album.artist}}, {{album.year}} | #{{album.rank_2020}}</h2>
-        <div class="buttons">
         {% if user.is_authenticated %}
-            {% if album in favorites %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=favorites&toggle=remove"><button class="remove">Remove from Favorites</button></a>
-            {% else %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=favorites&toggle=add"><button class="add">Add to Favorites</button></a>
-            {% endif %}
+            <div class="buttons">
+                {% if album in favorites %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=favorites&toggle=remove"><button class="remove">Remove from Favorites</button></a>
+                {% else %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=favorites&toggle=add"><button class="add">Add to Favorites</button></a>
+                {% endif %}
 
-            {% if album in want_to_listen %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=want_to_listen&toggle=remove"><button class="remove">Remove from Want to Listen</button></a>
-            {% else %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=want_to_listen&toggle=add"><button class="add">Add to Want to Listen</button></a>
-            {% endif %}
+                {% if album in want_to_listen %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=want_to_listen&toggle=remove"><button class="remove">Remove from Want to Listen</button></a>
+                {% else %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=want_to_listen&toggle=add"><button class="add">Add to Want to Listen</button></a>
+                {% endif %}
 
-            {% if album in listened %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=listened&toggle=remove"><button class="remove">Remove from Listened</button></a>
-            {% else %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=listened&toggle=add"><button class="add">Add to Listened</button></a>
-            {% endif %}
+                {% if album in listened %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=listened&toggle=remove"><button class="remove">Remove from Listened</button></a>
+                {% else %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=listened&toggle=add"><button class="add">Add to Listened</button></a>
+                {% endif %}
 
-            {% if album in not_interested %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=not_interested&toggle=remove"><button class="remove">Remove from Not Interested</button></a>
-            {% else %}
-                <a href="{% url 'toggle_my_list' album.pk %}?list=not_interested&toggle=add"><button class="add">Add to Not Interested</button></a>
-            {% endif %}
+                {% if album in not_interested %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=not_interested&toggle=remove"><button class="remove">Remove from Not Interested</button></a>
+                {% else %}
+                    <a href="{% url 'toggle_my_list' album.pk %}?list=not_interested&toggle=add"><button class="add">Add to Not Interested</button></a>
+                {% endif %}
+            </div>
+        {% else %}
+            <p class="signup-reminder"><a href="{% url "signup" %}">Sign up</a> or <a href="{% url "login" %}">log in</a> to save this album.</p>
         {% endif %}
-        </div>
     </div>
 </div>
 

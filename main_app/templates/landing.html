@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1 class="landing">Explore <em>Rolling Stone</em>'s list of the 500 Greatest Albums of All Time.</h1>
+
+<div>
+    <h3>See albums by rank, date, or artist.</h3>
+    <h3>Save the ones you want to listen to.</h3>
+    <h3>Filter out the ones you've already heard.</h3>
+</div>
+
+<div>
+    <p><a href="{% url "signup" %}">Sign up</a>, <a href="{% url "login" %}">log in</a>, or just <a href="{% url "all_albums" %}">dive right in</a>.
+</div>
+{% endblock %}
