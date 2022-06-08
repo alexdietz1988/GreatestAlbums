@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{this_list}}
+{% endblock%}
+
+{%block body%}
+<h1>{{this_list}}</h1>
+
+<div class="covers-container">
+    {% for album in albums %}
+        <div class="cover-container">
+            <a href="{% url 'album_detail' album.pk %}">
+            <img src={{album.image}} alt="{{album.title}}" class="cover-medium"/>
+            </a>
+        <span class="rank">{{album.rank_2020}}</span>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,23 +1,94 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{this_list}}
+My List
 {% endblock%}
 
 {%block body%}
-<h1>{{this_list}}</h1>
+<h1>My List</h1>
 
+<h2><a href="{% url "selected_list" "favorites" %}">Favorites</a></h2>
 <div class="covers-container">
-    {% for album in albums %}
-        <div class="cover-container">
-            <a href="{% url 'album_detail' album.pk %}">
-            <img src={{album.image}} alt="{{album.title}}" class="cover-medium"/>
-            </a>
-        <span class="rank">{{album.rank_2020}}</span>
-        </div>
+    {% for album in favorites %}
+        <a href="{% url 'album_detail' album.pk %}">
+            <div class="cover-container">
+                <div class="tooltip">
+                    <b>{{album.title}}</b></br>
+                    {{album.artist}}, {{album.year}}
+                </div>
+                <div class="rank-container">
+                    <div class="rank">
+                        {{album.rank_2020}}
+                    </div>
+                </div>
+                <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
+            </div>
+         </a>
     {% endfor %}
 </div>
+<p><a href="{% url "selected_list" "favorites" %}">See all</a></p>
 
-{{hello}}
+<h2><a href="{% url "selected_list" "want_to_listen" %}">Want to Listen</a></h2>
+<div class="covers-container">
+    {% for album in want_to_listen %}
+        <a href="{% url 'album_detail' album.pk %}">
+            <div class="cover-container">
+                <div class="tooltip">
+                    <b>{{album.title}}</b></br>
+                    {{album.artist}}, {{album.year}}
+                </div>
+                <div class="rank-container">
+                    <div class="rank">
+                        {{album.rank_2020}}
+                    </div>
+                </div>
+                <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
+            </div>
+         </a>
+    {% endfor %}
+</div>
+<p><a href="{% url "selected_list" "want_to_listen" %}">See all</a></p>
+
+<h2><a href="{% url "selected_list" "listened" %}">Listened</a></h2>
+<div class="covers-container">
+    {% for album in listened %}
+        <a href="{% url 'album_detail' album.pk %}">
+            <div class="cover-container">
+                <div class="tooltip">
+                    <b>{{album.title}}</b></br>
+                    {{album.artist}}, {{album.year}}
+                </div>
+                <div class="rank-container">
+                    <div class="rank">
+                        {{album.rank_2020}}
+                    </div>
+                </div>
+                <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
+            </div>
+         </a>
+    {% endfor %}
+</div>
+<p><a href="{% url "selected_list" "listened" %}">See all</a></p>
+
+<h2><a href="{% url "selected_list" "not_interested" %}">Not Interested</a></h2>
+<div class="covers-container">
+    {% for album in not_interested %}
+        <a href="{% url 'album_detail' album.pk %}">
+            <div class="cover-container">
+                <div class="tooltip">
+                    <b>{{album.title}}</b></br>
+                    {{album.artist}}, {{album.year}}
+                </div>
+                <div class="rank-container">
+                    <div class="rank">
+                        {{album.rank_2020}}
+                    </div>
+                </div>
+                <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
+            </div>
+         </a>
+    {% endfor %}
+</div>
+<p><a href="{% url "selected_list" "not_interested" %}">See all</a></p>
 
 {% endblock %}

@@ -63,8 +63,20 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
-class MyListView(TemplateView):
+class MyListAll(TemplateView):
     template_name = "mylist.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        mylist = MyList.objects.get(user=self.request.user)
+        context["favorites"] = mylist.favorites.all()
+        context["want_to_listen"] = mylist.want_to_listen.all()
+        context["listened"] = mylist.listened.all()
+        context["not_interested"] = mylist.not_interested.all()
+        return context
+
+class SelectedList(TemplateView):
+    template_name = "mylist_selected.html"
 
     def get_context_data(self, this_list, **kwargs):
         context = super().get_context_data(**kwargs)

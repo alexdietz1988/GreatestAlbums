@@ -11,6 +11,15 @@ main {
     text-align: center;
 }
 
+h2 a {
+    color: white;
+    text-decoration: none;
+}
+
+a {
+    color: white
+}
+
 .cover-medium {
     width: 250px;
 }

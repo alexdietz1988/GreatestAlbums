@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('albums/<int:pk>/', views.AlbumDetail.as_view(), name="album_detail"),
 
-    path('mylist/<slug:this_list>', views.MyListView.as_view(), name="my_list"),
+    path('mylist', views.MyListAll.as_view(), name="my_list"),
+    path('mylist/<slug:this_list>', views.SelectedList.as_view(), name="selected_list"),
     path('albums/<int:album>/toggle-mylist', views.ToggleMyList.as_view(), name="toggle_my_list"),
 ]

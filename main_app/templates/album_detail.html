@@ -48,12 +48,20 @@
     {% for other_album in albums %}
         {% if other_album.artist == album.artist and other_album.title != album.title and other_album.rank_2020 > 0 %}
 
-            <div class="cover-container">
-                <a href="{% url 'album_detail' other_album.pk %}">
+            <a href="{% url 'album_detail' other_album.pk %}">
+                <div class="cover-container">
+                    <div class="tooltip">
+                        <b>{{other_album.title}}</b></br>
+                        {{other_album.artist}}, {{other_album.year}}
+                    </div>
+                    <div class="rank-container">
+                        <div class="rank">
+                            {{other_album.rank_2020}}
+                        </div>
+                    </div>
                     <img src="{{other_album.image}}" alt="{{other_album.title}}" class="cover-small"/>
-                </a>
-                <span class="tooltiptext">{{album.rank_2020}}</span>
-            </div>
+                </div>
+            </a>
         {% endif %}
     {% endfor %}
     </div>

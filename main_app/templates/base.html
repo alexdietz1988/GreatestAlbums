@@ -20,10 +20,7 @@
                 <ul>
                     <li><a href="{% url "all_albums" %}">All Albums</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url "my_list" "favorites" %}">Favorites</a></li>
-                    <li><a href="{% url "my_list" "want-to-listen" %}">Want to Listen</a></li>
-                    <li><a href="{% url "my_list" "listened" %}">Listened</a></li>
-                    <li><a href="{% url "my_list" "not-interested" %}">Not Interested</a></li>
+                    <li><a href="{% url "my_list" %}">My List</a></li>
                     <li><a href="{% url "logout" %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url "signup" %}">Sign Up</a></li>
