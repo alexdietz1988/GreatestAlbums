@@ -38,12 +38,31 @@
     justify-content: center;
 }
 
+.covers-container a {
+    color: white;
+}
+
 .cover-container {
-    margin: 1px -10px;
+    margin: 2px 2px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .cover-small {
     width: 100px;
+}
+
+.rank-container {
+    width: 98.5px;
+    height: 99.5px;
+
+    position: absolute;
+    z-index: 1;
+
+    display: flex;
+    justify-content: right;
 }
 
 .rank {
@@ -52,14 +71,27 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    position: relative;
+    position: absolute;
     z-index: 1;
-    top: 2px;
-    left: -16px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: smaller;
+}
+
+.tooltip {
+    visibility: hidden;
+    opacity: 90%;
+    background-color: slategray;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 2;
+    position: absolute;
+    font-size: smaller;
+}
+
+.cover-container:hover .tooltip {
+    visibility: visible;
 }
 
 @media screen and (max-width: 750px) {
