@@ -81,10 +81,18 @@ class SelectedList(TemplateView):
     def get_context_data(self, this_list, **kwargs):
         context = super().get_context_data(**kwargs)
         mylist = MyList.objects.get(user=self.request.user)
-        if this_list == "favorites": context["albums"] = mylist.favorites.all()
-        if this_list == "want-to-listen": context["albums"] = mylist.want_to_listen.all()
-        if this_list == "listened": context["albums"] = mylist.listened.all()
-        if this_list == "not-interested": context["albums"] = mylist.not_interested.all()
+        if this_list == "favorites":
+            context["albums"] = mylist.favorites.all()
+            context["list_title"] = "Favorites"
+        if this_list == "want-to-listen":
+            context["albums"] = mylist.want_to_listen.all()
+            context["list_title"] = "Want to Listen"
+        if this_list == "listened":
+            context["albums"] = mylist.listened.all()
+            context["list_title"] = "Listened"
+        if this_list == "not-interested":
+            context["albums"] = mylist.not_interested.all()
+            context["list_title"] = "Not Interested"
         return context
 
 class ToggleMyList(View):

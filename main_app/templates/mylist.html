@@ -28,7 +28,7 @@ My List
 </div>
 <p><a href="{% url "selected_list" "favorites" %}">See all</a></p>
 
-<h2><a href="{% url "selected_list" "want_to_listen" %}">Want to Listen</a></h2>
+<h2><a href="{% url "selected_list" "want-to-listen" %}">Want to Listen</a></h2>
 <div class="covers-container">
     {% for album in want_to_listen %}
         <a href="{% url 'album_detail' album.pk %}">
@@ -47,7 +47,7 @@ My List
          </a>
     {% endfor %}
 </div>
-<p><a href="{% url "selected_list" "want_to_listen" %}">See all</a></p>
+<p><a href="{% url "selected_list" "want-to-listen" %}">See all</a></p>
 
 <h2><a href="{% url "selected_list" "listened" %}">Listened</a></h2>
 <div class="covers-container">
@@ -70,7 +70,7 @@ My List
 </div>
 <p><a href="{% url "selected_list" "listened" %}">See all</a></p>
 
-<h2><a href="{% url "selected_list" "not_interested" %}">Not Interested</a></h2>
+<h2><a href="{% url "selected_list" "not-interested" %}">Not Interested</a></h2>
 <div class="covers-container">
     {% for album in not_interested %}
         <a href="{% url 'album_detail' album.pk %}">
@@ -87,8 +87,10 @@ My List
                 <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
             </div>
          </a>
+    {% empty %}
+    You haven't yet added any albums to this list.
     {% endfor %}
 </div>
-<p><a href="{% url "selected_list" "not_interested" %}">See all</a></p>
+<p><a href="{% url "selected_list" "not-interested" %}">See all</a></p>
 
 {% endblock %}
