@@ -6,6 +6,7 @@ class Album(models.Model):
     title = models.CharField(max_length=250)
     artist = models.CharField(max_length=250)
     image = models.CharField(max_length=500, default='')
+    image_small = models.CharField(max_length=500, default='')
     rank_2003 = models.IntegerField(default=0)
     rank_2012 = models.IntegerField(default=0)
     rank_2020 = models.IntegerField(default=0)

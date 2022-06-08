@@ -22,21 +22,22 @@ with open(filename) as f:
         
         artists.append(artist)
 
-        # title = row[4].replace("'","''")
-        # year = row[5]
+        title = row[4].replace("'","''")
+        year = row[5]
 
-        # rank_2003 = row[0]
-        # rank_2012 = row[1]
-        # rank_2020 = row[2]
-        # if rank_2003 == '': rank_2003 = 0
-        # if rank_2012 == '': rank_2012 = 0
-        # if rank_2020 == '': rank_2020 = 0
+        rank_2003 = row[0]
+        rank_2012 = row[1]
+        rank_2020 = row[2]
+        if rank_2003 == '': rank_2003 = 0
+        if rank_2012 == '': rank_2012 = 0
+        if rank_2020 == '': rank_2020 = 0
 
-        # image = f'http://alexdietz.com/covers/{rank_2020}.jpg'
+        image = f'http://alexdietz.com/covers/{rank_2020}.jpg'
+        image_small = f'http://alexdietz.com/covers/{rank_2020}-small.jpg'
 
-        # seed += f'INSERT INTO main_app_album(title, artist, image, rank_2003, rank_2012, rank_2020, year)\n\tVALUES\n\t\t('
-        # seed += f"'{title}', '{artist}', '{image}', {rank_2003}, {rank_2012}, {rank_2020}, {year});\n\n"
+        seed += f'INSERT INTO main_app_album(title, artist, image, image_small, rank_2003, rank_2012, rank_2020, year)\n\tVALUES\n\t\t('
+        seed += f"'{title}', '{artist}', '{image}', '{image_small}', {rank_2003}, {rank_2012}, {rank_2020}, {year});\n\n"
 
-# text_file = open("seed.txt", "w")
-# n = text_file.write(seed)
-# text_file.close()
+text_file = open("seed.txt", "w")
+n = text_file.write(seed)
+text_file.close()

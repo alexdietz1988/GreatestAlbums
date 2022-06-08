@@ -7,6 +7,9 @@ All Albums
 {%block body%}
 
 <h2>All Albums</h2>
+
+{{page}}
+
 <div class="cover-display">
     <div class="menu">
         <ul>
@@ -35,7 +38,7 @@ All Albums
                                 {{album.rank_2020}}
                             </div>
                         </div>
-                        <img src="{{album.image}}" alt="{{album.title}}" class="cover-small"/>
+                        <img src="{{album.image_small}}" alt="{{album.title}}" class="cover-small"/>
                     </div>
                 </a>
             {% endif %}
