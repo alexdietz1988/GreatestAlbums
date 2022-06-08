@@ -17,6 +17,10 @@
     width: 200px;
 }
 
+.albumdetail-rank {
+    color: lightslategray;
+}
+
 button {
     font-size: 12px;
     padding: 10px;
