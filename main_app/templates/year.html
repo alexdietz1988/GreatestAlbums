@@ -11,19 +11,28 @@
 
     <div class="menu">
         <ul>
-        {% if decade > 1950 %}
+        {% if decade == 1950 %}
+            <li><a href="{% url 'year' decade decade|add:'5' %}">{{decade|add:'5'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'6' %}">{{decade|add:'6'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'7' %}">{{decade|add:'7'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'8' %}">{{decade|add:'8'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a></li>
+        
+        {% else %}
             <li><a href="{% url 'decade' decade|add:'-10' %}">{{decade|add:'-10'}}s</a> <span class="arrow">←</span></li>
+        
+            <li><a href="{% url 'year' decade decade %}">{{decade}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'1' %}">{{decade|add:'1'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'2' %}">{{decade|add:'2'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'3' %}">{{decade|add:'3'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'4' %}">{{decade|add:'4'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'5' %}">{{decade|add:'5'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'6' %}">{{decade|add:'6'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'7' %}">{{decade|add:'7'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'8' %}">{{decade|add:'8'}}</a></li>
+            <li><a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a></li>
         {% endif %}
-        <li><a href="{% url 'year' decade decade %}">{{decade}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'1' %}">{{decade|add:'1'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'2' %}">{{decade|add:'2'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'3' %}">{{decade|add:'3'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'4' %}">{{decade|add:'4'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'5' %}">{{decade|add:'5'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'6' %}">{{decade|add:'6'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'7' %}">{{decade|add:'7'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'8' %}">{{decade|add:'8'}}</a></li>
-        <li><a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a></li>
+    
         {% if decade < 2010 %}
             <li>→ <a href="{% url 'decade' decade|add:'10' %}">{{decade|add:'10'}}s</a>
         {% endif %}
