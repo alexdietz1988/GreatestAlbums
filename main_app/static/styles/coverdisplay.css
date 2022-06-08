@@ -1,15 +1,16 @@
 .cover-display {
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
 }
 
 .menu {
-    padding: 10px 0;
+    padding: 0px 0;
     margin: 5px 0;
     background-color: #374048;
     color: darkgrey;
-    width: 842px;
+    width: 828.5px;
     display: flex;
     justify-content: center;
 }
@@ -18,16 +19,16 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    padding: 0;
+    align-items: center;
+    padding-left: 0;
 }
 
 .menu li {
     display: inline;
-    margin: 10px;
+    margin: 0 10px;
 }
 
 .menu a {
-    margin: 0px;
     color: #00bfff;
     text-decoration: none;
 }
@@ -94,11 +95,10 @@
     visibility: visible;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 450px) {
     .menu {
-        padding: 0;
+        width: 304px;
     }
-
     .menu li {
         font-size: smaller;
         margin: 5px;
@@ -106,7 +106,11 @@
 }
 
 @media screen and (max-width: 350px) {
-    .menu ul {
-        width: 60vw;
+    .menu {
+        width: 204px;
+    }
+    .menu li {
+        font-size: smaller;
+        margin: 5px;
     }
 }
