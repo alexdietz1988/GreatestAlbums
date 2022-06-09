@@ -8,7 +8,9 @@ All Albums
 
 <h1>All Albums</h1>
 
-<p>Showing only albums not in your lists. <a href="{% url "all_albums" "1" %}">See all albums.</p>
+{% if user.is_authenticated %}
+    <p>Showing only albums not in your lists. <a href="{% url "all_albums" "1" %}">See all albums.</p>
+{% endif %}
 
 <div class="cover-display">
     <div class="menu">

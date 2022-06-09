@@ -17,7 +17,7 @@ class AllAlbums(TemplateView):
         context['albums'] = Album.objects.all()
         return context
 
-class Filtered(TemplateView):
+class AllFilter(TemplateView):
     template_name = "all_filter.html"
 
     def get_context_data(self, **kwargs):
@@ -54,12 +54,40 @@ class Decade(TemplateView):
         context['albums'] = Album.objects.all()
         return context
 
+class DecadeFilter(TemplateView):
+    template_name = "decade_filter.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        if self.request.user.is_authenticated:
+            mylist = MyList.objects.get(user=self.request.user)
+            context["favorites"] = mylist.favorites.all()
+            context["want_to_listen"] = mylist.want_to_listen.all()
+            context["listened"] = mylist.listened.all()
+            context["not_interested"] = mylist.not_interested.all()
+        return context
+
 class Year(TemplateView):
     template_name = "year.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['albums'] = Album.objects.all()
+        return context
+
+class YearFilter(TemplateView):
+    template_name = "year_filter.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        if self.request.user.is_authenticated:
+            mylist = MyList.objects.get(user=self.request.user)
+            context["favorites"] = mylist.favorites.all()
+            context["want_to_listen"] = mylist.want_to_listen.all()
+            context["listened"] = mylist.listened.all()
+            context["not_interested"] = mylist.not_interested.all()
         return context
 
 class Signup(View):

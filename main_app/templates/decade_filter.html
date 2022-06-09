@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 
-{% block title %}{{year}}{% endblock%}
+{% block title %}{{decade}}s{% endblock%}
 
 {%block body%}
 
 
-<h1>{{year}}</h1>
+<h1>{{decade}}s</h1>
 
 {% if user.is_authenticated %}
-    <p>Showing all albums. <a href="{% url "year_filter" decade year %}">See only albums not in your lists.</a></p>
+    <p>Showing only albums not in your lists. <a href="{% url "decade" decade %}">See all albums.</p>
 {% endif %}
 
 <div class="cover-display">
 
     <div class="menu">
         <ul>
+
         {% if decade == 1950 %}
             <li><a href="{% url 'year' decade decade|add:'5' %}">{{decade|add:'5'}}</a></li>
             <li><a href="{% url 'year' decade decade|add:'6' %}">{{decade|add:'6'}}</a></li>
             <li><a href="{% url 'year' decade decade|add:'7' %}">{{decade|add:'7'}}</a></li>
             <li><a href="{% url 'year' decade decade|add:'8' %}">{{decade|add:'8'}}</a></li>
             <li><a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a></li>
-        
+
         {% else %}
             <li><a href="{% url 'decade' decade|add:'-10' %}">{{decade|add:'-10'}}s</a> <span class="arrow">←</span></li>
         
@@ -36,15 +37,17 @@
             <li><a href="{% url 'year' decade decade|add:'8' %}">{{decade|add:'8'}}</a></li>
             <li><a href="{% url 'year' decade decade|add:'9' %}">{{decade|add:'9'}}</a></li>
         {% endif %}
-    
+
         {% if decade < 2010 %}
-            <li>→ <a href="{% url 'decade' decade|add:'10' %}">{{decade|add:'10'}}s</a>
+            <li>→ <a href="{% url 'decade' decade|add:'10' %}">{{decade|add:'10'}}s</a></li>
         {% endif %}
+        </ul>
     </div>
 
     <div class="covers-container">
     {% for album in albums %}
-        {% if album.year == year and album.rank_2020 > 0 %}
+        {% if album.year >= decade and album.year < decade|add:'10' and album.rank_2020 > 0 and album not in not_interested and album not in favorites and album not in listened and album not in want_to_listen %}
+
             <a href="{% url 'album_detail' album.pk %}">
                 <div class="cover-container">
                     <div class="tooltip">
@@ -56,13 +59,12 @@
                             {{album.rank_2020}}
                         </div>
                     </div>
-                    <img src="{{album.image_small}}" alt="{{album.title}}" class="cover-small"/>
+                    <img src={{album.image_small}} alt="{{album.title}}" class="cover-small"/>
                 </div>
             </a>
+
         {% endif %}
     {% endfor %}
     </div>
-
 </div>
-
 {% endblock %}

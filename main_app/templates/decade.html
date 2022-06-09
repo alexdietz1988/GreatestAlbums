@@ -7,6 +7,10 @@
 
 <h1>{{decade}}s</h1>
 
+{% if user.is_authenticated %}
+    <p>Showing all albums. <a href="{% url "decade_filter" decade %}">See only albums not in your lists.</a></p>
+{% endif %}
+
 <div class="cover-display">
 
     <div class="menu">
