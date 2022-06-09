@@ -17,6 +17,20 @@ class AllAlbums(TemplateView):
         context['albums'] = Album.objects.all()
         return context
 
+class Filtered(TemplateView):
+    template_name = "all_filter.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        if self.request.user.is_authenticated:
+            mylist = MyList.objects.get(user=self.request.user)
+            context["favorites"] = mylist.favorites.all()
+            context["want_to_listen"] = mylist.want_to_listen.all()
+            context["listened"] = mylist.listened.all()
+            context["not_interested"] = mylist.not_interested.all()
+        return context
+
 class AlbumDetail(TemplateView):
     template_name = "album_detail.html"
 

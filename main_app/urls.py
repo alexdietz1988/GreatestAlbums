@@ -9,6 +9,7 @@ urlpatterns = [
     path('albums/<int:decade>s/<int:year>', views.Year.as_view(), name="year"),
     path('albums/<int:pk>/', views.AlbumDetail.as_view(), name="album_detail"),
 
+    path('filter/', views.Filtered.as_view(), name="all_filter"),
 
     path('mylists', views.MyLists.as_view(), name="my_lists"),
     path('mylists/<slug:this_list>', views.SelectedList.as_view(), name="selected_list"),
