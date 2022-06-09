@@ -7,8 +7,14 @@ from .models import Album, MyList
 import math
 
 # Create your views here.
+class Switcher(View):
+    def get(self, request):
+        if self.request.user.is_authenticated == False:
+            return redirect("/landing")
+        else: return redirect("/all/1")
+
 class Landing(TemplateView):
-    template_name="landing.html"
+    template_name = "landing.html"
 
 class AllAlbums(TemplateView):
     template_name = "all_albums.html"
@@ -105,7 +111,7 @@ class Signup(View):
             user = form.save()
             MyList.objects.create(user=user)
             login(request, user)
-            return redirect("/")
+            return redirect("/all/1")
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)

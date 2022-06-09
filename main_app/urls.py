@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.Landing.as_view(), name="landing"),
+    path('', views.Switcher.as_view(), name="switcher"),
+    path('landing', views.Landing.as_view(), name="landing"),
     path('accounts/signup', views.Signup.as_view(), name="signup"),
 
     path('all/<int:page>', views.AllAlbums.as_view(), name="all_albums"),
