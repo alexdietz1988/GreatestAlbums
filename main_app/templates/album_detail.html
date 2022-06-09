@@ -10,7 +10,7 @@
     <img src={{album.image}} alt="{{album.title}}" class="cover-large"/>
     <div class="album-details">
         <h1>{{album.title}}</h1>
-        <h2>{{album.artist}}, {{album.year}}<br />
+        <h2>{{album.artist}}, <a href="{% url "year" decade album.year %}">{{album.year}}</a><br />
         <span class="albumdetail-rank">#{{album.rank_2020}}</span></h2>
         <h3></h3>
         {% if user.is_authenticated %}

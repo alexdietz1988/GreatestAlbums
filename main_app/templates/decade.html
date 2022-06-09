@@ -7,6 +7,8 @@
 
 <h1>{{decade}}s</h1>
 
+<p><a href="{% url "all_albums" "1" %}">Show all years.</a></p>
+
 {% if user.is_authenticated %}
     <p>Showing all albums. <a href="{% url "decade_filter" decade %}">See only albums not in your lists.</a></p>
 {% endif %}
@@ -67,4 +69,5 @@
     {% endfor %}
     </div>
 </div>
+
 {% endblock %}

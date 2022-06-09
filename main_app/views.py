@@ -4,6 +4,7 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Album, MyList
+import math
 
 # Create your views here.
 class Landing(TemplateView):
@@ -36,7 +37,9 @@ class AlbumDetail(TemplateView):
 
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["album"] = Album.objects.get(pk=pk)
+        album = Album.objects.get(pk=pk)
+        context["album"] = album
+        context["decade"] = math.floor(album.year/10) * 10
         context["albums"] = Album.objects.all()
         if self.request.user.is_authenticated:
             mylist = MyList.objects.get(user=self.request.user)
