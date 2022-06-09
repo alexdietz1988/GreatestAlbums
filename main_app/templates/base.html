@@ -20,7 +20,7 @@
                 <ul>
                     <li><a href="{% url "all_albums" "1" %}">All Albums</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url "my_list" %}">My List</a></li>
+                    <li><a href="{% url "my_lists" %}">My Lists</a></li>
                     <li><a href="{% url "logout" %}">Logout</a></li>
                 {% else %}
                     <li><a href="{% url "signup" %}">Sign Up</a></li>

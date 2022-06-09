@@ -65,8 +65,8 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
-class MyListAll(TemplateView):
-    template_name = "mylist.html"
+class MyLists(TemplateView):
+    template_name = "mylists.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,7 +78,7 @@ class MyListAll(TemplateView):
         return context
 
 class SelectedList(TemplateView):
-    template_name = "mylist_selected.html"
+    template_name = "selectedlist.html"
 
     def get_context_data(self, this_list, **kwargs):
         context = super().get_context_data(**kwargs)
