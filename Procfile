@@ -1,0 +1,1 @@
+web: gunicorn greatest_albums_project.wsgi
