@@ -23,18 +23,20 @@
 
 button {
     font-size: 12px;
+    font-weight: bold;
     padding: 10px;
     border-radius: 15px;
-    color: lightgrey;
+    color: black;
     border: 1px solid darkslategrey;
+    width: 195px;
 }
 
 .add {
-    background-color: darkgreen;
+    background-color: lightgreen;
 }
 
 .remove {
-    background-color: darkred;
+    background-color: lightcoral;
 }
 
 .signup-reminder {

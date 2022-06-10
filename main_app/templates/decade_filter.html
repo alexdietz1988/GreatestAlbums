@@ -10,7 +10,7 @@
 <p><a href="{% url "all_albums" "1" %}">Show all years.</a></p>
 
 {% if user.is_authenticated %}
-    <p>Showing all albums. <a href="{% url "decade_filter" decade %}">See only albums not in your lists.</a></p>
+    <p>Showing only albums not in your lists. <a href="{% url "decade" decade %}">See all albums.</p>
 {% endif %}
 
 <div class="cover-display">
@@ -48,7 +48,7 @@
 
     <div class="covers-container">
     {% for album in albums %}
-        {% if album.year >= decade and album.year < decade|add:'10' and album.rank_2020 > 0 %}
+        {% if album.year >= decade and album.year < decade|add:'10' and album.rank_2020 > 0 and album not in not_interested and album not in favorites and album not in listened and album not in want_to_listen %}
 
             <a href="{% url 'album_detail' album.pk %}">
                 <div class="cover-container">
@@ -69,5 +69,4 @@
     {% endfor %}
     </div>
 </div>
-
 {% endblock %}

@@ -4,10 +4,17 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Album, MyList
+import math
 
 # Create your views here.
+class Switcher(View):
+    def get(self, request):
+        if self.request.user.is_authenticated == False:
+            return redirect("/landing")
+        else: return redirect("/all/1")
+
 class Landing(TemplateView):
-    template_name="landing.html"
+    template_name = "landing.html"
 
 class AllAlbums(TemplateView):
     template_name = "all_albums.html"
@@ -17,12 +24,28 @@ class AllAlbums(TemplateView):
         context['albums'] = Album.objects.all()
         return context
 
+class AllFilter(TemplateView):
+    template_name = "all_filter.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        if self.request.user.is_authenticated:
+            mylist = MyList.objects.get(user=self.request.user)
+            context["favorites"] = mylist.favorites.all()
+            context["want_to_listen"] = mylist.want_to_listen.all()
+            context["listened"] = mylist.listened.all()
+            context["not_interested"] = mylist.not_interested.all()
+        return context
+
 class AlbumDetail(TemplateView):
     template_name = "album_detail.html"
 
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["album"] = Album.objects.get(pk=pk)
+        album = Album.objects.get(pk=pk)
+        context["album"] = album
+        context["decade"] = math.floor(album.year/10) * 10
         context["albums"] = Album.objects.all()
         if self.request.user.is_authenticated:
             mylist = MyList.objects.get(user=self.request.user)
@@ -40,12 +63,40 @@ class Decade(TemplateView):
         context['albums'] = Album.objects.all()
         return context
 
+class DecadeFilter(TemplateView):
+    template_name = "decade_filter.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        if self.request.user.is_authenticated:
+            mylist = MyList.objects.get(user=self.request.user)
+            context["favorites"] = mylist.favorites.all()
+            context["want_to_listen"] = mylist.want_to_listen.all()
+            context["listened"] = mylist.listened.all()
+            context["not_interested"] = mylist.not_interested.all()
+        return context
+
 class Year(TemplateView):
     template_name = "year.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['albums'] = Album.objects.all()
+        return context
+
+class YearFilter(TemplateView):
+    template_name = "year_filter.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['albums'] = Album.objects.all()
+        if self.request.user.is_authenticated:
+            mylist = MyList.objects.get(user=self.request.user)
+            context["favorites"] = mylist.favorites.all()
+            context["want_to_listen"] = mylist.want_to_listen.all()
+            context["listened"] = mylist.listened.all()
+            context["not_interested"] = mylist.not_interested.all()
         return context
 
 class Signup(View):
@@ -60,7 +111,7 @@ class Signup(View):
             user = form.save()
             MyList.objects.create(user=user)
             login(request, user)
-            return redirect("/")
+            return redirect("/all/1")
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
