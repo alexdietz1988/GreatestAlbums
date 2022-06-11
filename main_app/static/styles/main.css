@@ -1,3 +1,36 @@
+header {
+    padding: 10px 0;
+    background-color: #161a1d;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+nav {
+    width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+    align-items: center;
+}
+
+nav li {
+    display: inline;
+    padding: 10px;
+}
+
+nav li a {
+    text-decoration: none;
+    color:#00bfff;
+}
+
+.site-title a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding-left: 15px;
+}
+
 body {
     background-color: #262626;
     color: white;
@@ -7,7 +40,6 @@ body {
 
 main {
     width: 850px;
-    max-width: 75vw;
     margin: 30px auto;
     display: flex;
     flex-flow: column wrap;
@@ -33,7 +65,7 @@ a {
 }
 
 section {
-    margin: 20px;
+    margin: 0 20px 0 0;
 }
 
 .page {
@@ -43,4 +75,51 @@ section {
     padding: 10px;
     border-radius: 10px;
     color: navy;
+}
+
+@media screen and (max-width: 850px) {
+    nav, main {
+        width: 700px;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+    nav, main {
+        width: 420px;
+    }
+    nav {
+        justify-content: center;
+    }
+    nav li {
+        margin: 0 0 0 0;
+    }
+    nav {
+        width: 450px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    header {
+        padding-bottom: 0;
+    }
+    nav {
+        width: 307px;
+    }
+    .site-title {
+        padding-left: 0;
+    }
+    nav ul {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        padding-left: 0;
+    }
+    nav li {
+        padding-bottom: 0;
+    }
+    main {
+        width: 307px;
+        margin: 0 auto;
+    }
 }
