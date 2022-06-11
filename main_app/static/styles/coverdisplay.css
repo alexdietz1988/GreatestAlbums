@@ -1,12 +1,10 @@
 .cover-display {
-    width: 90%;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
 }
 
 .menu {
-    padding: 0px 0;
     margin: 5px 0;
     background-color: #374048;
     color: darkgrey;
@@ -97,7 +95,7 @@ a {
 
 @media screen and (max-width: 450px) {
     .menu {
-        width: 304px;
+        width: 307.5px;
     }
     .menu li {
         font-size: smaller;
@@ -107,10 +105,13 @@ a {
 
 @media screen and (max-width: 350px) {
     .menu {
-        width: 204px;
+        width: 307px;
     }
-    .menu li {
-        font-size: smaller;
-        margin: 5px;
+    .cover-small {
+        width: 149.5px;
+    }
+    .rank-container {
+        width: 147.5px;
+        height: 149px;
     }
 }
