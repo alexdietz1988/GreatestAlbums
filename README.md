@@ -18,6 +18,21 @@ You can use the app by clicking [here](https://greatestalbums.herokuapp.com).
 
 If you'd like to contribute to the app, you can fork and clone this repo, make changes, and submit a pull request. If you notice a bug or want to propose an idea for improving the app, you can submit it as an issue to this repo.
 
+## User Stories
+1. I want to see what the site is about, and click on a link to register or login, which will take me to a register/login page.
+2. I want to see a grid displaying covers for all the albums on the list.
+3. Mousing over an album cover should tell me the album title, artist, and rank.
+4. I want to be able to click on an album and see the album details, and choose whether to mark/unmark it as “want to listen”, “favorite,” or “listened”.
+5. From the album detail page, I want to be able to click on the artist’s name and see a grid displaying covers for all that artist’s albums that appear on the list.
+6. From the main album list view, I want to be able to use dropdown menus to select different sorting/filtering options, including sort by rank vs. sort by date; filter by decade or by year; and filter by what what I’ve marked as “want to listen,” “favorite,” or “listened.”
+7. I should also be able to access grids of what I’ve marked as “want to listen” etc. through links on the header.
+
+## Wireframes
+![image](screenshots/wireframes.png)
+
+## ERD
+![image](screenshots/erd.png)
+
 ## Development Roadmap
 - [x] Album index, album detail
 - [x] Filter album index by decade, year
