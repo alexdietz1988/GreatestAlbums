@@ -3,7 +3,6 @@ header {
     background-color: #161a1d;
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
 }
 
 nav {
@@ -89,6 +88,15 @@ section {
     nav, main {
         width: 420px;
     }
+    nav {
+        justify-content: center;
+    }
+    nav li {
+        margin: 0 0 0 0;
+    }
+    nav {
+        width: 450px;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -97,8 +105,6 @@ section {
     }
     nav {
         width: 307px;
-        justify-content: center;
-        flex-flow: column wrap;
     }
     .site-title {
         padding-left: 0;
