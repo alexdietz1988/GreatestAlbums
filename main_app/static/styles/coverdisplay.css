@@ -93,6 +93,18 @@ a {
     visibility: visible;
 }
 
+@media screen and (max-width: 850px) {
+    .menu {
+        width: 621px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .menu {
+        width: 412.5px;
+    }
+}
+
 @media screen and (max-width: 450px) {
     .menu {
         width: 307.5px;
@@ -100,12 +112,6 @@ a {
     .menu li {
         font-size: smaller;
         margin: 5px;
-    }
-}
-
-@media screen and (max-width: 350px) {
-    .menu {
-        width: 307px;
     }
     .cover-small {
         width: 149.5px;
