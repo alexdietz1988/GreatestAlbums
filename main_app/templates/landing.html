@@ -8,14 +8,16 @@ Explore Great Music
 
 <h1 class="landing">Explore <em>Rolling Stone</em>'s list of the 500 Greatest Albums of All Time.</h1>
 
-<div>
+<section>
     <h3>See albums by rank, date, or artist.</h3>
     <h3>Save the ones you want to listen to.</h3>
     <h3>Filter out the ones you've already heard.</h3>
-</div>
+</section>
 
-<div>
-    <h4><a href="{% url "signup" %}">Sign up</a>, <a href="{% url "login" %}">log in</a>, or just <a href="{% url "all_albums" "1" %}">dive right in</a>.</h4>
-    <p class="small">You can find the original list <a href="https://www.rollingstone.com/music/music-lists/best-albums-of-all-time-1062063/">here</a>.</p>
-</div>
+<section>
+    <h2><a href="{% url "signup" %}">Sign up</a>, <a href="{% url "login" %}">log in</a>, or just <a href="{% url "all_albums" "1" %}">dive right in</a>.</h2><br />
+</section>
+
+<p class="small">You can find the original list <a href="https://www.rollingstone.com/music/music-lists/best-albums-of-all-time-1062063/">here</a>.</p>
+
 {% endblock %}
