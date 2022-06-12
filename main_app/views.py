@@ -44,9 +44,17 @@ class AlbumDetail(TemplateView):
     def get_context_data(self, pk, **kwargs):
         context = super().get_context_data(**kwargs)
         album = Album.objects.get(pk=pk)
+        albums = Album.objects.all()
         context["album"] = album
         context["decade"] = math.floor(album.year/10) * 10
         context["albums"] = Album.objects.all()
+
+        other_albums = []
+        for other_album in albums:
+            if other_album.artist == album.artist and other_album.title != album.title and other_album.rank_2020 > 0:
+                other_albums.append(other_album)
+        context["other_albums"] = other_albums
+
         if self.request.user.is_authenticated:
             mylist = MyList.objects.get(user=self.request.user)
             context["favorites"] = mylist.favorites.all()
