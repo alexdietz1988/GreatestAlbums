@@ -3,7 +3,7 @@
     flex-direction: row wrap;
     justify-content: center;
     align-items: center;
-    margin: 50px;
+    margin: 50px 0;
 }
 
 .cover-large {
@@ -48,7 +48,7 @@ button {
 @media screen and (max-width: 750px) {
     .album-display {
         flex-direction: column;
-        margin: 0;
+        margin: 20px 0px;
     }
 
     .cover-large {
@@ -57,7 +57,8 @@ button {
     }
 
     .album-details {
-        width: 90vw;
+        width: 75vw;
+        margin: 20px 0px;
     }
 
     .album-details h1, h2 {
