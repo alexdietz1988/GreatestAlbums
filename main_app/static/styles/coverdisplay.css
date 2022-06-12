@@ -19,11 +19,13 @@
     justify-content: center;
     align-items: center;
     padding-left: 0;
+    margin: 5px;
 }
 
 .menu li {
     display: inline;
     margin: 0 10px;
+    line-height: 1.8;
 }
 
 a {
