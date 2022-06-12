@@ -17,6 +17,10 @@
     color: navy;
 }
 
+section {
+    margin-bottom: 30px;
+}
+
 @media screen and (max-width: 650px) {
     .landing {
         width: 100%;
