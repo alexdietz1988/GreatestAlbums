@@ -1,8 +1,6 @@
 header {
     padding: 10px 0;
     background-color: #161a1d;
-    display: flex;
-    flex-flow: row wrap;
 }
 
 nav {
@@ -14,8 +12,12 @@ nav {
     align-items: center;
 }
 
+nav ul {
+    padding: 0 0 0 10px;
+}
+
 nav li {
-    display: inline;
+    display: inline-block;
     padding: 10px;
 }
 
@@ -28,7 +30,7 @@ nav li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    padding-left: 15px;
+    margin-right: 15px;
 }
 
 body {
@@ -75,21 +77,35 @@ a {
 }
 
 @media screen and (max-width: 850px) {
-    nav, main {
+    main {
         width: 700px;
     }
-
+    nav ul {
+        padding-left: 40px;
+    }
 }
 
 @media screen and (max-width: 650px) {
-    nav, main {
-        width: 420px;
-    }
-    nav {
+    header {
+        display: flex;
+        flex-flow: row wrap;
         justify-content: center;
     }
+    .site-title {
+        margin-right: 5px;
+    }
+
+    
+    main {
+        width: 420px;
+    }
+
+    nav ul {
+        padding-left: 18px;
+    }
+
     nav li {
-        margin: 0 0 0 0;
+        margin: 0;
     }
     nav {
         width: 450px;
@@ -105,9 +121,11 @@ a {
     }
     nav {
         width: 307px;
+        font-size: small;
     }
     .site-title {
         padding-left: 0;
+        margin-right: 0;
     }
     nav ul {
         display: flex;
@@ -116,7 +134,7 @@ a {
         padding-left: 0;
     }
     nav li {
-        padding-bottom: 0;
+        padding: 0 7px;
     }
     main {
         width: 307px;
