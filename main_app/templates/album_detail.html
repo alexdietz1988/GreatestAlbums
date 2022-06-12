@@ -45,13 +45,14 @@
     </div>
 </div>
 
-<div class="other-albums">
-    <h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>
-    <div class="covers-container">
+{% if other_albums|length == 0 %}
+    <p>This is the only album by {{album.artist}} in the <em>RS 500</em>.</p>
+{% else %}
+    <div class="other-albums">
+        <h2>Other Albums by {{album.artist}} in the <em>RS 500</em></h2>
+        <div class="covers-container">
 
-    {% for other_album in albums %}
-        {% if other_album.artist == album.artist and other_album.title != album.title and other_album.rank_2020 > 0 %}
-
+        {% for other_album in other_albums %}
             <a href="{% url 'album_detail' other_album.pk %}">
                 <div class="cover-container">
                     <div class="tooltip">
@@ -66,10 +67,10 @@
                     <img src="{{other_album.image_small}}" alt="{{other_album.title}}" class="cover-small"/>
                 </div>
             </a>
-        {% endif %}
-    
-    {% endfor %}
+        
+        {% endfor %}
+        </div>
     </div>
-</div>
+{% endif %}
 
 {% endblock %}

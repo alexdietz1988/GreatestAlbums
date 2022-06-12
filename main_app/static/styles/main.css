@@ -62,10 +62,7 @@ a {
 .small {
     font-size: smaller;
     color: lightgrey;
-}
-
-section {
-    margin: 0 20px 0 0;
+    line-height: 1.5;
 }
 
 .page {
