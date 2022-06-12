@@ -3,25 +3,23 @@ header {
     background-color: #161a1d;
 }
 
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 nav {
-    width: 850px;
-    margin: 0 auto;
+    width: 828.5px;
     display: flex;
     flex-flow: row wrap;
     justify-content: left;
     align-items: center;
 }
 
-nav ul {
-    padding: 0 0 0 10px;
-}
-
 nav li {
     display: inline-block;
-    padding: 10px;
-}
-
-nav li a {
+    margin: 10px;
     text-decoration: none;
     color:#00bfff;
 }
@@ -30,6 +28,7 @@ nav li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    margin-left: 10px;
     margin-right: 15px;
 }
 
@@ -57,61 +56,27 @@ a {
     color: white
 }
 
-.landing {
-    width: 50vw;
-}
-
-.small {
-    font-size: smaller;
-    color: lightgrey;
-    line-height: 1.5;
-}
-
-.page {
-    display: inline;
-    margin: 10px;
-    background-color: cyan;
-    padding: 10px;
-    border-radius: 10px;
-    color: navy;
-}
-
 @media screen and (max-width: 850px) {
     main {
         width: 700px;
     }
-    nav ul {
-        padding-left: 40px;
+    nav {
+        width: 621px;
     }
 }
 
 @media screen and (max-width: 650px) {
-    header {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
+    nav {
+        width: 421.5px;
     }
     .site-title {
         margin-right: 5px;
     }
-
-    
+    nav li {
+        margin: 5px;
+    }
     main {
         width: 420px;
-    }
-
-    nav ul {
-        padding-left: 18px;
-    }
-
-    nav li {
-        margin: 0;
-    }
-    nav {
-        width: 450px;
-    }
-    .landing {
-        width: 100%;
     }
 }
 
@@ -122,6 +87,10 @@ a {
     nav {
         width: 307px;
         font-size: small;
+        justify-content: center;
+    }
+    nav ul {
+        padding-left: 0px;
     }
     .site-title {
         padding-left: 0;
@@ -131,13 +100,11 @@ a {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
-        padding-left: 0;
     }
     nav li {
         padding: 0 7px;
     }
     main {
         width: 307px;
-        margin: 0 auto;
     }
 }

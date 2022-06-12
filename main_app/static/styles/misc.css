@@ -1,0 +1,24 @@
+.landing {
+    width: 50vw;
+}
+
+.small {
+    font-size: smaller;
+    color: lightgrey;
+    line-height: 1.5;
+}
+
+.page {
+    display: inline;
+    margin: 10px;
+    background-color: cyan;
+    padding: 10px;
+    border-radius: 10px;
+    color: navy;
+}
+
+@media screen and (max-width: 650px) {
+    .landing {
+        width: 100%;
+    }
+}
