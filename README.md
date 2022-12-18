@@ -1,7 +1,7 @@
 # Greatest Albums
 
 ## About
-Greatest Albums is an app where users can explore *Rolling Stone*’s [2020 list](https://www.rollingstone.com/music/music-lists/best-albums-of-all-time-1062063/) of the 500 Greatest Albums of All Time. You can check out the app [here](https://greatestalbums.herokuapp.com).
+Greatest Albums is an app where users can explore *Rolling Stone*’s [2020 list](https://www.rollingstone.com/music/music-lists/best-albums-of-all-time-1062063/) of the 500 Greatest Albums of All Time.
 
 As a user, you can browse all albums; see album details, including other albums by the artist featured on the RS list; and save an album to your "favorites," "want to listen," "listened," or "not interested" list. You can also filter albums by decade or year, or see only albums that you haven't yet added to your lists.
 
